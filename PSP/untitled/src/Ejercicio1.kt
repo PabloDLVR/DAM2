@@ -1,6 +1,6 @@
 fun main(args: Array<String>) {
-    val nombre = args[0]
-    val proceso = ProcessBuilder(nombre)
+    val nombre = "arp -a"
+    val proceso = ProcessBuilder("cmd.exe","/c","arp -a >fichero.txt")
     proceso.start()
-    print("Hola mundo $nombre")
+    print("Se ha ejecutado $nombre")
 }
