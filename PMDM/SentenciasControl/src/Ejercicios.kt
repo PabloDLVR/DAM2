@@ -2,6 +2,7 @@ fun main() {
 
     //Ejercicio1()
     //Ejercicio2()
+    Ejercicio3()
 }
 //1. Escribe un programa que lea un número entero y que indique si es par o impar.
 fun Ejercicio1(){
@@ -31,7 +32,13 @@ fun Ejercicio2(){
 
 //3. Escribe un programa que lea un número entero y que indique si es primo o no.
 fun Ejercicio3(){
-
+    println("Intrduce un número: ")
+    val numero = readLine()!!.toInt()
+    if (numero % 2 == 0 || numero % 3 == 0){
+        println("El numero $numero es un numero primo")
+    }else{
+        println("El numero $numero no es un numero primo")
+    }
 }
 
 //4. Escribe un programa que lea un número entero y que muestre por pantalla todos los números primos menores o iguales al número leído.
