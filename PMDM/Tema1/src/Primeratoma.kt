@@ -29,7 +29,11 @@ fun main() {
 
     /*println("El resultado de la operacion es ${sumar(op1 = 4, op2 = 7)}")*/
 
-    sumaFlecha(5, 7)
+    //sumaFlecha(5, 7)
+
+    //decdirWhen(9)
+
+    repetirFor()
 
 }
 
@@ -45,5 +49,38 @@ fun sumar(op1: Int, op2: Int): Int {
 
 val sumaFlecha = { p1: Int, p2: Int -> println("El resultado de la suma es ${p1 + p2}") }
 
+fun decdirWhen(valor: Int) {
+
+    println("El valor analizado es: ")
+    when (valor) {
+        1 -> {
+            println("El caso tiene como valor 1 ")
+        }
+
+        2 -> {
+            println("El caso tiene como valor 2 ")
+        }
+
+        3 -> {
+            println("El caso tiene como valor 3 ")
+        }
+
+        4 -> {
+            println("EEl caso tiene como valor 4")
+        }
+    }
+
+}
+
+fun repetirFor() {
+    /*for (i in 0.. 9) {
+        println(i)
+    }*/
+
+
+    // Si la funcion de flecha solo tiene 1 argumento, este se puede llmar con la palabra reservada it
+   // (20..30).forEach { }
+    (20..30).forEachIndexed { index, item -> println("Elemento en posicion $index con valor $item") }
+}
 
 
