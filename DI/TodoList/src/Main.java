@@ -1,6 +1,8 @@
 import model.Persona;
 import model.Tarea;
 
+//Creamos un encargo, los encargos tienen una propiedad llamada descripcion,id y otra completa
+
 public class Main {
     public static void main(String[] args) {
         Tarea tarea = new Tarea("Practica DI",

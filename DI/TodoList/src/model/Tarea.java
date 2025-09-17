@@ -31,15 +31,55 @@ public class Tarea {
 
     public void añadirPersona(Persona persona) {
         for (int i = 0; i < personas.length; i++) {
-            if (personas[i] == null) {
+            if (personas[i] == null && !estaDNI(persona.getDni())) {
                 personas[i] = persona;
                 System.out.println("Persona agregada correctamente");
                 return;
-            }if (personas[i].equals(persona.getDni())){
-                System.out.println("No se ha podido agregar correctamente, DNI ya registrado");
             }
         }
         System.out.println("No hay hueco disponible, tarea completa");
+    }
+
+    private boolean estaDNI(String dni) {
+        for (Persona persona : personas) {
+            if (persona != null && persona.getDni().equalsIgnoreCase(dni)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void eliminarResponsable(String dni) {
+        for (Persona persona : personas) {
+            if (persona != null && persona.getDni().equalsIgnoreCase(dni)) {
+                persona = null;
+                System.out.println("Persona elminada correctamente");
+                return;
+            }
+        }
+        System.out.printf("La persona con DNI %s no esta en esta tarea", dni);
+    }
+
+    //mostrar los datos de todos los usuarios que son responsables de dicha tarea
+    //en caso de no ttener ninguna avisar
+    //en caso de tener huecos disponibles, avisar de cuantos
+
+    public void disponibilidad() {
+        int numeroHuecos = 0;
+        for (Persona persona : personas) {
+            if (persona == null) {
+                numeroHuecos++;
+            } else {
+                System.out.println(persona);
+            }
+        }
+        if (numeroHuecos == personas.length) {
+            System.out.println("No hay responsables asignados");
+        } else if (numeroHuecos > 0) {
+            System.out.printf("Hay %d huecos disponibles%n", numeroHuecos);
+        } else {
+            System.out.println("Todos los responsables están ubicados");
+        }
     }
 
     @Override

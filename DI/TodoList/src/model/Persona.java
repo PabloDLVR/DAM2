@@ -25,6 +25,10 @@ public class Persona {
     //si no hay hueco saltar aviso;
     //no podrás agregar dos personas que tengan el mismo DNI;
 
+    //En una tarea se pueden quitar responsables. Solo podre quitar una tarea si el DNI
+    //que me indicas esta dentro de la lista de responsables.Mostrar aviso tanto para
+    //proceso OK como proceso no OK
+
     @Override
     public String toString() {
         return "Persona{" +
