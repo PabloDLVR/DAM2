@@ -21,7 +21,7 @@ print("La temperatura en grados Fahrenheit es:", fahrenheit)
 peso = int(input("Introduce tu peso en kg: "))
 altura = int(input("Introduce tu altura en metros: "))
 imc = peso / (altura ** 2)
-print("Tu índice de masa corporal es:", imc)
+print(f"Tu índice de masa corporal es:, {imc}")
 
 # 5.5 - Concatenación de cadenas: 
 
@@ -31,6 +31,7 @@ cadena_concatenada = cadena1 + " " + cadena2
 print("La cadena concatenada es:", cadena_concatenada)
 
 # 5. 6 Determinar el tipo de dato:
+
 
 
 # 5.7 Calcular el promedio de tres números:
