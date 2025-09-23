@@ -6,6 +6,7 @@ import java.io.InputStreamReader
 class Producto(
     var id: Int,
     var nombre: String = "SIN NOMBRE",
+    var categoria: Categoria = Categoria.Generica,
     var precio: Double = 10.00,
     var descropcion: String = "SIN DESCRIPCION"
 ) {
@@ -32,11 +33,8 @@ class Producto(
     //si ni hay nombre aoarece sin nombre
     //si ni hay descripcion aoarece sin descripcion
 
-    fun verDatos(){
-        println("El ID: ${id}\nNombre: ${nombre}\nCon precio: ${precio}\nDescripcion: ${descropcion}\n")
-    }
-
-    fun crearTienda(){
-
+    fun verDatos() {
+        println("El ID: ${id}\nNombre: ${nombre}\nCon precio: ${precio}\n" +
+                " Categoria: ${categoria}\n Descripcion: ${descropcion}\n")
     }
 }

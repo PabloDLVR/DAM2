@@ -44,11 +44,24 @@ class crearTienda(var nombreTienda: String) {
         for (item in 0..almacen.size - 1) {
             if (almacen[item] != null && almacen[item]?.id == id) {
                 caja += almacen[item]!!.precio
-                almacen[item]=null
+                almacen[item] = null
                 return
             }
         }
         println("El ID no esta en la lista")
+    }
+
+    fun buscarProductosCategoria(categoria: Categoria) {
+        //filtrando-> obtengo varios
+
+    }
+
+    fun buscarProductoId(id: Int): Unit {
+        //buscando->Obtengo solo un elemento
+        var productoBusqueda: Producto? = almacen.find {
+            it
+            return@find it?.id == id
+        }
     }
 
 
