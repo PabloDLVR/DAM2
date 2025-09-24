@@ -23,3 +23,9 @@ public class Main {
 
     }
 }
+
+//TODO Listar todos ls encargos de una tarea
+//TODO Buscar un encargo por id y mostrar sus datos
+//TODO Completar un encargo -> pasar su variable completada a true
+//TODO Buscar un encargo que estan completados ->
+//TODO Completar una tarea -> Una tarea quedará completa si todos sus encargos están completos
