@@ -1,10 +1,16 @@
 package model;
 
+import java.util.ArrayList;
+
+//TODO crear el método que permite agregar un encargo, los encargos deben tener ID unico -> PONER AVISOS
+//TODO Crear el método que permite eliminar un encargo, para ello se pide el ID del encargo y se quita de la lista -> PONER AVISO
+
 public class Tarea {
 
     private String titulo, descripcion;
     private boolean prioritario, completada;
     private Persona[] personas;
+    private ArrayList<Encargo> listaTareas;
 
     public Tarea() {
         for (int i = 0; i < personas.length; i++) {
@@ -18,6 +24,7 @@ public class Tarea {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.prioritario = prioritario;
+        listaTareas = new ArrayList<>();
         personas = new Persona[numeroPersonas];
         //Completada = False;
     }
@@ -25,6 +32,7 @@ public class Tarea {
     public Tarea(String titulo, String descripcion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        listaTareas = new ArrayList<>();
         //Completada = False;
         //Prioritario = False;
     }
@@ -38,6 +46,32 @@ public class Tarea {
             }
         }
         System.out.println("No hay hueco disponible, tarea completa");
+    }
+
+    private Encargo eataEncargo(int id) {
+        for (Encargo encargo : listaTareas){
+            if (encargo.getId()==id)
+                return encargo;
+        }
+        return null;
+    }
+
+    public void añadirEncargo(Encargo encargo) {
+        if (eataEncargo(encargo.getId())!=null){
+            System.out.println("Error en el proceso, no se pudo agregar");
+        }else {
+            listaTareas.add(encargo);
+            System.out.println("Encargo añadido correctamente");
+        }
+    }
+
+    public void eliminarEncargo(int id) {
+        if (eataEncargo(id)!=null){
+            listaTareas.remove(eataEncargo(id));
+            System.out.println("Borrado correctamente");
+        }else {
+            System.out.println("El ID no se encuentra en la lista");
+        }
     }
 
     private boolean estaDNI(String dni) {
@@ -122,5 +156,21 @@ public class Tarea {
 
     public void setCompletada(boolean completada) {
         this.completada = completada;
+    }
+
+    public ArrayList<Encargo> getListaTareas() {
+        return listaTareas;
+    }
+
+    public void setListaTareas(ArrayList<Encargo> listaTareas) {
+        this.listaTareas = listaTareas;
+    }
+
+    public Persona[] getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(Persona[] personas) {
+        this.personas = personas;
     }
 }
