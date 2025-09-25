@@ -53,7 +53,11 @@ class crearTienda(var nombreTienda: String) {
 
     fun buscarProductosCategoria(categoria: Categoria) {
         //filtrando-> obtengo varios
+       val filtro: List<Producto?> = almacen.filter { it
+        return@filter it?.categoria == categoria
+        }
 
+        println("El numero de elementos resultantes es: ${filtro.size}")
     }
 
     fun buscarProductoId(id: Int): Unit {
@@ -63,6 +67,4 @@ class crearTienda(var nombreTienda: String) {
             return@find it?.id == id
         }
     }
-
-
 }

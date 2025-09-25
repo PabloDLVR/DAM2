@@ -33,15 +33,17 @@ fun main() {
         producto?.verDatos()
     }*/
 
-    //TODO vamos a crear una tienda. Para ello crar la clase necesaria donde pueda asignar:
-    //TODO 1- Nombre de la tienda (obligatorio)
-    //TODO 2- Almacen: sitio donde se guardan los productos
-    //TODO Tiene un tamaño fijo de 6
-    //TODO 3- Caja: se guardar la caja cuando se venda un prodcuto
+    // vamos a crear una tienda. Para ello crar la clase necesaria donde pueda asignar:
+    // 1- Nombre de la tienda (obligatorio)
+    // 2- Almacen: sitio donde se guardan los productos
+    // Tiene un tamaño fijo de 6
+    // 3- Caja: se guardar la caja cuando se venda un prodcuto
+
 
     var tienda:crearTienda= crearTienda("Tienda de todo un poco")
     tienda.almacen=listaProductos
-    tienda.mostrarAlmacen()
+    //tienda.mostrarAlmacen()
+    tienda.buscarProductosCategoria(Categoria.Ropa)
 
 
 
