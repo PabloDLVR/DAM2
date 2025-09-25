@@ -10,14 +10,34 @@ fun main() {
     val array = arrayOf("Buenos días, cuánto dinero desea ingresar?")
 
     val out = OutputStreamWriter(procesoArranque.outputStream)
-    out.write(array.joinToString(",")+"\n")
+    /*out.write(array.joinToString(",")+"\n")
     out.flush()
 
 
     /*print(array.joinToString(","))
     out.write(array.joinToString(","))*/
+     */
 
     val input = procesoArranque.inputStream
     val leer = BufferedReader(InputStreamReader(input))
-    print(leer.readLine())
+    //print(leer.readLine())
+
+
+    val mensajes = listOf(
+        "Bienvenido al cajero automático.",
+        "¿Cuánto dinero desea ingresar?",
+        "¿Cuánto dinero desea retirar?",
+        "Gracias por usar el cajero."
+    )
+
+    var saldoFinal = ""
+
+    for (msg in mensajes) {
+        println("Padre -> $msg")
+        out.write(msg + "\n")
+        out.flush()
+
+        val respuesta = leer.readLine()
+        println("Hijo -> $respuesta")
+    }
 }
