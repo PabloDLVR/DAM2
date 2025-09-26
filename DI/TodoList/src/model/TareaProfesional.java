@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class TareaProfesional extends Tarea {
+public class TareaProfesional extends Tarea implements FuncioalidadCompartida{
     private int presupuesto;
     private Date fechaLimite;
 
@@ -27,6 +27,11 @@ public class TareaProfesional extends Tarea {
                         , persona.getNombre(), getListaTareas().size());
             }
         }
+    }
+
+    @Override
+    public void metodoComun() {
+        
     }
 
     public int getPresupuesto() {
