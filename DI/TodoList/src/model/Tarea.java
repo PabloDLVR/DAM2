@@ -29,12 +29,16 @@ public class Tarea {
         //Completada = False;
     }
 
-    public Tarea(String titulo, String descripcion) {
+    public Tarea(String titulo, String descripcion, int numeroPersonas) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        personas = new Persona[numeroPersonas];
         listaTareas = new ArrayList<>();
         //Completada = False;
         //Prioritario = False;
+    }
+
+    abstract public void enviarAviso(){
     }
 
     public void añadirPersona(Persona persona) {
@@ -49,27 +53,27 @@ public class Tarea {
     }
 
     private Encargo eataEncargo(int id) {
-        for (Encargo encargo : listaTareas){
-            if (encargo.getId()==id)
+        for (Encargo encargo : listaTareas) {
+            if (encargo.getId() == id)
                 return encargo;
         }
         return null;
     }
 
     public void añadirEncargo(Encargo encargo) {
-        if (eataEncargo(encargo.getId())!=null){
+        if (eataEncargo(encargo.getId()) != null) {
             System.out.println("Error en el proceso, no se pudo agregar");
-        }else {
+        } else {
             listaTareas.add(encargo);
             System.out.println("Encargo añadido correctamente");
         }
     }
 
     public void eliminarEncargo(int id) {
-        if (eataEncargo(id)!=null){
+        if (eataEncargo(id) != null) {
             listaTareas.remove(eataEncargo(id));
             System.out.println("Borrado correctamente");
-        }else {
+        } else {
             System.out.println("El ID no se encuentra en la lista");
         }
     }

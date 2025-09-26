@@ -14,6 +14,11 @@ public class Encargo {
     public Encargo() {
     }
 
+    public void mostrarDatos(){
+        System.out.println("id = " + id);
+        System.out.println("descripcion = " + desceipcion);
+        System.out.println("completada = " + completada);
+    }
 
     public boolean isCompletada() {
         return completada;
