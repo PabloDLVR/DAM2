@@ -31,7 +31,7 @@ public class TareaProfesional extends Tarea implements FuncioalidadCompartida{
 
     @Override
     public void metodoComun() {
-        
+
     }
 
     public int getPresupuesto() {
