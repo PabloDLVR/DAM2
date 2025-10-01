@@ -22,7 +22,7 @@ public class TareaPersonal extends Tarea implements FuncioalidadCompartida {
 
     }
 
-    @Override
+    //@Override
     public void enviarAviso() {
         System.out.println("Recuerda terminar las tareasbuff");
     }

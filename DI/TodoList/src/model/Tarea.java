@@ -13,11 +13,6 @@ public class Tarea {
     private ArrayList<Encargo> listaTareas;
 
     public Tarea() {
-        for (int i = 0; i < personas.length; i++) {
-            if (personas == null) {
-                System.out.println("Introduzca su nombre");
-            }
-        }
     }
 
     public Tarea(String titulo, String descripcion, boolean prioritario, int numeroPersonas) {
@@ -38,8 +33,7 @@ public class Tarea {
         //Prioritario = False;
     }
 
-    abstract public void enviarAviso(){
-    }
+
 
     public void añadirPersona(Persona persona) {
         for (int i = 0; i < personas.length; i++) {
@@ -117,6 +111,58 @@ public class Tarea {
             System.out.printf("Hay %d huecos disponibles%n", numeroHuecos);
         } else {
             System.out.println("Todos los responsables están ubicados");
+        }
+    }
+
+    public void mostarEncagados() {
+        int num = 0;
+        for (Persona persona : personas) {
+            if (persona == null) {
+                num++;
+            } else {
+                System.out.println(persona);
+            }
+        }
+        if (num == personas.length) {
+            System.out.println("No hay responsables asignados");
+        } else if (num > 0) {
+            System.out.printf("Hay %d huecos disponibles%n", num);
+        } else {
+            System.out.println("Todos los responsbles estan hubicados");
+        }
+    }
+
+    public void completarTerea(){
+        for (Encargo encargo: listaTareas) {
+            if (!encargo.isCompletada()) {
+                System.out.println("No se puede completar la tarea");
+                return;
+            }
+        }
+        completada = true;
+        System.out.println("tarea completada con exito");
+    }
+
+    public void listarEncargoCompletado(){
+        for (Encargo encargos : listaTareas) {
+            encargos.mostrarDatos();
+        }
+    }
+
+    public boolean completarEncargo(int id) {
+        if (eataEncargo(id) != null && !eataEncargo(id).isCompletada()) {
+            eataEncargo(id).setCompletada(true);
+            System.out.println("El encargo se completo con exito");
+            return true;
+        }else {
+            System.out.println("No se pudo completar o no esta en la lista");
+            return false;
+        }
+    }
+
+    public void listarEncargos() {
+        for (Encargo encargos : listaTareas) {
+            encargos.mostrarDatos();
         }
     }
 

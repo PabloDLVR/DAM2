@@ -10,13 +10,15 @@ public class TareaProfesional extends Tarea implements FuncioalidadCompartida{
 
     }
 
+    public TareaProfesional(String tareaP1, String descripcion, boolean b, int i, int i1, Date date){}
+
     public TareaProfesional(String titulo, String descripcion, int numeroPersonas, int presupuesto, Date fechaLimite) {
         super(titulo, descripcion, numeroPersonas);
         this.presupuesto = presupuesto;
         this.fechaLimite = fechaLimite;
     }
 
-    @Override
+    //@Override
     public void enviarAviso() {
         //TODO Se imprime por consola, a cad uno de los responsables el mensaje,
         //TODO Borja, recuerda terminar las tareas asociadas a esta tarea

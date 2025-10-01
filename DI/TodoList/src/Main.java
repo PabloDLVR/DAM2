@@ -29,7 +29,7 @@ public class Main {
         tareas.add(tareaPersonal);
         tareas.add(tareaProfesional);
         for (Tarea tarea1 : tareas) {
-            tarea1.enviarAviso();
+           // tarea1.enviarAviso();
             System.out.println(tarea1);
         }
     }
