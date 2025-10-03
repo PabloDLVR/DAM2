@@ -26,11 +26,19 @@ def verificar_password():
         return False
 
 def cambiar_password():
-    """Función para cambiar la contraseña actual 📝"""
+    """Función para cambiar la contraseña actual y pedir validación 🔑"""
     global password
     nueva = input(Fore.CYAN + "🔑 Escribe tu nueva contraseña: ")
     password = nueva
     print(Fore.GREEN + "✅ Contraseña cambiada con éxito.")
+    # Ahora pedimos la nueva contraseña para confirmar
+    while True:
+        intento = input(Fore.YELLOW + "👉 Vuelve a introducir la nueva contraseña para continuar: ")
+        if intento == password:
+            print(Fore.GREEN + "✅ ¡Perfecto! Contraseña confirmada. 🚀")
+            break
+        else:
+            print(Fore.RED + "❌ Contraseña incorrecta, inténtalo de nuevo.")
 
 # -----------------------------
 # 📚 Operaciones Matemáticas
@@ -57,7 +65,7 @@ def log_base_n(a, n): return math.log(a, n) if a > 0 and n > 1 else "⚠️ Valo
 # 📜 Menú Principal
 # -----------------------------
 def menu():
-    print(Fore.MAGENTA + Style.BRIGHT + "\n✨ MENÚ DE LA CALCULADORA CIENTÍFICA ✨")
+    print(Fore.MAGENTA + Style.BRIGHT + "\n🧮 MENÚ DE LA CALCULADORA CIENTÍFICA 🧮")
     print(Fore.CYAN + """
     1️⃣  Suma
     2️⃣  Resta
