@@ -1,7 +1,5 @@
-import controller.ShieldController;
-import static java.io.IO.print;
-import static java.sql.DriverManager.println;
-import static kotlin.io.ConsoleKt.readLine;
+import controller.ShieldController
+import kotlin.system.exitProcess
 
 fun main() {
     val controller = ShieldController()
@@ -28,6 +26,7 @@ fun main() {
             7 -> controller.enfrentar()
             8 -> {
                 println("👋 Saliendo del sistema.")
+                exitProcess(0)
             }
             else -> println("❌ Opción no válida.")
         }

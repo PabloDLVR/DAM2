@@ -61,7 +61,6 @@ class PlataformaJuegos {
             println("Índice no válido.")
             return
         }
-
         val juego = juegos[indice - 1]
         if (juego is Descargable) {
             val tiempo = juego.calcularTiempoDescarga(velocidad)
