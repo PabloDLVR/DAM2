@@ -166,8 +166,5 @@ def calculadora():
 
         else:
             print(Fore.RED + "⚠️ Opción no válida, intenta de nuevo.")
-
-# -----------------------------
-# ▶️ Ejecutamos la calculadora
-# -----------------------------
+            
 calculadora()
