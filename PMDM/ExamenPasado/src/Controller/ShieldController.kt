@@ -31,7 +31,7 @@ class ShieldController {
     }
 
     fun crearHumano() {
-        if (armas.none { it is ArmaTradicional }) {
+        if (armas.none() { it is ArmaTradicional }) {
             println("❌ No hay armas tradicionales registradas.")
             return
         }
