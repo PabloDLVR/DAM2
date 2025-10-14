@@ -14,26 +14,63 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Button botonPulsar;
+    private Button botonPulsar,botonVaciar;
     @FXML
     private Label labelSaludo;
     @FXML
     private TextField textfieldNombre;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Ejecutado directamente en la asociacion de la stage
 
-        acciones();
+        //acciones();
+        //vaciar();
 
+    }
+
+    private void vaciar(){
+        botonVaciar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                textfieldNombre.setText("");
+                labelSaludo.setText("");
+            }
+        });
     }
 
     private void acciones() {
         botonPulsar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Has pulsado el boton");
+                //El metodo ejecutar cuando se pulsa el boton
+                String nombre = textfieldNombre.getText();
+                if (nombre.isBlank()) {
+                    System.out.println("El nombre no puede estar vacio");
+                } else {
+                    labelSaludo.setText("Enhorabuena " + nombre + ", has completado el primer ejercicio de JavaFX");
+                }
+
+                //al pulsar el boton se capture el texto que esta en el textfield y se lo asignamos al label
+
+                //el mensaje de "Enhorabuena Pablo, has completado el primer ejercicio de JavaFX"
             }
         });
+    }
+
+    class manejoAcciones implements EventHandler<ActionEvent> {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            System.out.println("Has pulsado el boton");
+            //que boton se ha pulado
+            String nombre = textfieldNombre.getText();
+            if (nombre.isBlank()) {
+                System.out.println("El nombre no puede estar vacio");
+            } else {
+                labelSaludo.setText("Enhorabuena " + nombre + ", has completado el primer ejercicio de JavaFX");
+            }
+        }
     }
 }
