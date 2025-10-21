@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -56,6 +57,8 @@ public class MainController implements Initializable {
         botonPulsar.setOnAction(new ManejoAccion());
         botonVaciar.setOnAction(new ManejoAccion());
         botonPulsar.setOnMouseEntered(new ManejoRaton());
+        botonPulsar.setOnMousePressed(new ManejoRaton());
+        botonPulsar.setOnMouseReleased(new ManejoRaton());
         botonPulsar.setOnMouseExited(new ManejoRaton());
 
     }
@@ -86,7 +89,20 @@ public class MainController implements Initializable {
     class ManejoRaton implements EventHandler<MouseEvent> {
         @Override
         public void handle(MouseEvent mouseEvent) {
-            
+            Button boton = (Button) mouseEvent.getSource();
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED) {
+                botonPulsar.setCursor(Cursor.OPEN_HAND);
+                boton.setEffect(sombra);
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
+                botonPulsar.setCursor(Cursor.CLOSED_HAND);
+                boton.setEffect(sombra);
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
+                botonPulsar.setCursor(Cursor.OPEN_HAND);
+                boton.setEffect(sombra);
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED) {
+                boton.setEffect(null);
+            }
         }
     }
+
 }
