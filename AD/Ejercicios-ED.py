@@ -102,9 +102,7 @@ else:
     for i in range(mitad - 1, -1, -1):
         print(" " * (mitad - i) + "*" * (2 * i + 1))
         
-        # Ejercicio 8
-
-# Matriz dada
+# Ejercicio 8
 matriz = [
     [1, 2, 3, 4, 5],
     [6, 7, 8, 9, 10],
@@ -134,7 +132,7 @@ print(f"Suma de las diagonales: {suma_total}")
 
 # Ejercicio 9
 
-n = int(input("Introduce el tamaño de la matriz (por ejemplo 5): "))
+n = int(input("Introduce el tamaño de la matriz: "))
 matriz = []
 
 print("Introduce los valores de la matriz fila por fila:")

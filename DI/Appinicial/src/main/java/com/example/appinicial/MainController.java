@@ -7,31 +7,32 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
     @FXML
-    private Button botonPulsar,botonVaciar;
+    private Button botonPulsar, botonVaciar;
     @FXML
     private Label labelSaludo;
     @FXML
     private TextField textfieldNombre;
 
+    private DropShadow sombra;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Ejecutado directamente en la asociacion de la stage
-
-        //acciones();
-        //vaciar();
-
+        instancias();
+        initGUI();
+        acciones();
     }
 
-    private void vaciar(){
+    private void vaciar() {
         botonVaciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -41,36 +42,51 @@ public class MainController implements Initializable {
         });
     }
 
-    private void acciones() {
-        botonPulsar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                //El metodo ejecutar cuando se pulsa el boton
-                String nombre = textfieldNombre.getText();
-                if (nombre.isBlank()) {
-                    System.out.println("El nombre no puede estar vacio");
-                } else {
-                    labelSaludo.setText("Enhorabuena " + nombre + ", has completado el primer ejercicio de JavaFX");
-                }
-
-                //al pulsar el boton se capture el texto que esta en el textfield y se lo asignamos al label
-
-                //el mensaje de "Enhorabuena Pablo, has completado el primer ejercicio de JavaFX"
-            }
-        });
+    private void initGUI() {
+        //personalizara las partes de la UI
+        botonPulsar.setEffect(sombra);
     }
 
-    class manejoAcciones implements EventHandler<ActionEvent> {
+    private void instancias() {
+        sombra = new DropShadow();
+    }
+
+    private void acciones() {
+
+        botonPulsar.setOnAction(new ManejoAccion());
+        botonVaciar.setOnAction(new ManejoAccion());
+        botonPulsar.setOnMouseEntered(new ManejoRaton());
+        botonPulsar.setOnMouseExited(new ManejoRaton());
+
+    }
+
+    class ManejoAccion implements EventHandler<ActionEvent> {
+
         @Override
         public void handle(ActionEvent actionEvent) {
-            System.out.println("Has pulsado el boton");
-            //que boton se ha pulado
-            String nombre = textfieldNombre.getText();
-            if (nombre.isBlank()) {
-                System.out.println("El nombre no puede estar vacio");
-            } else {
-                labelSaludo.setText("Enhorabuena " + nombre + ", has completado el primer ejercicio de JavaFX");
+            if (actionEvent.getSource() == botonPulsar) {
+                String nombre = textfieldNombre.getText();
+                if (nombre.isBlank()) {
+                    System.out.println("Por favor introduce un nombre");
+                } else {
+                    labelSaludo.setText("Enhorabuena " + nombre + " has completado el primer ejercicio");
+                    textfieldNombre.clear();
+                }
+                System.out.println("Has pulsado el boton pulsar");
+            } else if (actionEvent.getSource() == botonVaciar) {
+                textfieldNombre.clear();
+                labelSaludo.setText("Coño que no lo he enchufado");
+                System.out.println("Has pulsado el boton vaciar");
             }
+        }
+
+
+    }
+
+    class ManejoRaton implements EventHandler<MouseEvent> {
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            
         }
     }
 }
