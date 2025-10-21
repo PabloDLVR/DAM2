@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Button botonPulsar, botonVaciar;
+    private Button botonPulsar, botonVaciar, botonLimpiar;
     @FXML
     private Label labelSaludo;
     @FXML
@@ -61,6 +61,8 @@ public class MainController implements Initializable {
         botonPulsar.setOnMouseReleased(new ManejoRaton());
         botonPulsar.setOnMouseExited(new ManejoRaton());
 
+        botonLimpiar.addEventHandler(ActionEvent.ACTION, new ManejoAccion());
+
     }
 
     class ManejoAccion implements EventHandler<ActionEvent> {
@@ -80,6 +82,8 @@ public class MainController implements Initializable {
                 textfieldNombre.clear();
                 labelSaludo.setText("Coño que no lo he enchufado");
                 System.out.println("Has pulsado el boton vaciar");
+            } else if (actionEvent.getSource() == botonLimpiar) {
+                textfieldNombre.clear();
             }
         }
 
