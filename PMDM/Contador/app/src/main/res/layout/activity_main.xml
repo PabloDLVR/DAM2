@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="Contador APP"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/contadorTexto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="50sp"
+        />
+
+    <Button
+        android:id="@+id/botonPositivo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:text="+"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/botonNegativo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:text="-"
+        android:textSize="50sp" />
+
+
+</LinearLayout>
