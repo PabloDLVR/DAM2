@@ -75,6 +75,7 @@ public class formController implements Initializable {
 
     private void initGUI() {
         comboEdad.setItems(listaEdades);
+        buttonAgregar.setDisable(!checkDisponibilidad.isSelected());
     }
 
     class ManejoActions implements EventHandler<ActionEvent> {
