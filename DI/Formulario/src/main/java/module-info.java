@@ -10,7 +10,12 @@ module com.example.formulario {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires lombok;
 
     opens com.example.formulario to javafx.fxml;
     exports com.example.formulario;
+    opens com.example.formulario.controller to javafx.fxml;
+    exports com.example.formulario.controller;
+    opens com.example.formulario.model to lombok;
+    exports com.example.formulario.model;
 }
