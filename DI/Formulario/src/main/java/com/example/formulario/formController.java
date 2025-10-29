@@ -54,11 +54,7 @@ public class formController implements Initializable {
         checkDisponibilidad.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                if (t1) {
-                    System.out.println("El usuario está disponible");
-                } else {
-                    System.out.println("El usuario no está disponible");
-                }
+                buttonAgregar.setDisable(!t1);
             }
         });
     }
