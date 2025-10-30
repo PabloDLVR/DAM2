@@ -17,4 +17,4 @@ fun main() {
     while (buffer.readLine().also { linea = it } != null) {
         println(linea)
     }
-}   
+}

@@ -16,14 +16,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        contador= savedInstanceState?.getInt("contador") ?: 0
-        binding.contadorTexto.text = contador.toString()
+        contador = savedInstanceState?.getInt("contador") ?: 0
         acciones()
     }
 
     private fun acciones() {
-        binding.botonPositivo.setOnClickListener(this)
-        binding.botonNegativo.setOnClickListener(this)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -31,15 +28,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         outState.putInt("contador", contador)
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            binding.botonPositivo.id->{
-                contador++
-            }
-            binding.botonNegativo.id->{
-                contador--
-            }
-        }
-        binding.contadorTexto.text = contador.toString()
-    }
+
 }
