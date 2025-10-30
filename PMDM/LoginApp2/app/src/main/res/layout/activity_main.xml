@@ -29,6 +29,16 @@
         app:layout_constraintStart_toStartOf="@+id/imagenLogin"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:text="Iniciar sesión"
+        app:layout_constraintEnd_toEndOf="@+id/editContrasena"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPerfil" />
+
     <EditText
         android:id="@+id/editContrasena"
         android:layout_width="0dp"
@@ -60,6 +70,43 @@
         app:layout_constraintEnd_toEndOf="@+id/spinnerPerfil"
         app:layout_constraintStart_toStartOf="@+id/spinnerPerfil"
         app:layout_constraintTop_toBottomOf="@+id/editContrasena" />
+
+    <ImageButton
+        android:id="@+id/botonGoogle"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="264dp"
+        android:src="@drawable/google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/checkRecordar" />
+
+    <ImageButton
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/facebook"
+        app:layout_constraintEnd_toEndOf="@+id/editContrasena"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkRecordar" />
+
+    <ImageButton
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/gith"
+        app:layout_constraintEnd_toEndOf="@+id/editContrasena"
+        app:layout_constraintStart_toStartOf="@+id/editContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/checkRecordar" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
