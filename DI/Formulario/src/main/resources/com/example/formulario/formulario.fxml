@@ -14,66 +14,74 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="panelGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.formulario.controller.formController">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField fx:id="textfieldNombre" promptText="Introduce Nombre" />
-            <TextField fx:id="textfieldCorreo" promptText="Introdcue Correo" GridPane.rowIndex="1" />
-            <TextField fx:id="textfieldLocalizacion" promptText="Introduce Localización" GridPane.rowIndex="2" />
-            <ComboBox fx:id="comboEdad" maxWidth="1.7976931348623157E308" promptText="Selecciona tu edad" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <CheckBox fx:id="checkDisponibilidad" mnemonicParsing="false" text="Disponibilidad" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
-               <children>
-                  <RadioButton fx:id="radioMasculino" mnemonicParsing="false" text="Masculino" />
-                  <RadioButton fx:id="radioFemenino" mnemonicParsing="false" text="Femenino">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </RadioButton>
-               </children>
-            </HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets right="10.0" />
-         </BorderPane.margin>
-      </GridPane>
-   </center>
-   <bottom>
-      <FlowPane alignment="CENTER" hgap="20.0" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="buttonAgregar" mnemonicParsing="false" text="Agregar" />
-            <Button fx:id="buttonEliminar" mnemonicParsing="false" text="Eliminar" />
-            <ToggleButton fx:id="toggleLista" mnemonicParsing="false" text="Ver Lista" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </FlowPane>
-   </bottom>
-   <right>
-      <FlowPane fx:id="parteDerecha" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Label" />
-         </children>
-      </FlowPane>
-   </right>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Nombre:" />
+                <TextField fx:id="textfieldNombre" promptText="Introduce Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+                <Label text="Correo:" GridPane.rowIndex="1" />
+                <TextField fx:id="textfieldCorreo" promptText="Introduce Correo" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                <Label text="Localización:" GridPane.rowIndex="2" />
+                <TextField fx:id="textfieldLocalizacion" promptText="Introduce Localización" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+
+                <Label text="Edad:" GridPane.rowIndex="3" />
+                <ComboBox fx:id="comboEdad" maxWidth="1.7976931348623157E308" promptText="Selecciona tu edad" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
+                <Label text="Género:" GridPane.rowIndex="4" />
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <children>
+                        <RadioButton fx:id="radioMasculino" mnemonicParsing="false" text="Masculino" />
+                        <RadioButton fx:id="radioFemenino" mnemonicParsing="false" text="Femenino">
+                            <padding>
+                                <Insets left="20.0" />
+                            </padding>
+                        </RadioButton>
+                    </children>
+                </HBox>
+
+                <CheckBox fx:id="checkDisponibilidad" mnemonicParsing="false" text="Disponibilidad" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            </children>
+            <BorderPane.margin>
+                <Insets right="10.0" />
+            </BorderPane.margin>
+        </GridPane>
+    </center>
+    <bottom>
+        <FlowPane alignment="CENTER" hgap="20.0" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="buttonAgregar" mnemonicParsing="false" text="Agregar" />
+                <Button fx:id="buttonEliminar" mnemonicParsing="false" text="Eliminar" />
+                <ToggleButton fx:id="toggleLista" mnemonicParsing="false" text="Ver Lista" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </FlowPane>
+    </bottom>
+    <right>
+        <FlowPane fx:id="parteDerecha" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Label" />
+            </children>
+        </FlowPane>
+    </right>
 </BorderPane>
