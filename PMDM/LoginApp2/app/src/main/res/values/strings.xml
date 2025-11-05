@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">LoginApp</string>
+    <string name="text_login">Iniciar sesión</string>
+    <string name="text_mail">Introduce correo</string>
+    <string name="text_pass">Introduce contraseña</string>
+    <string name="text_check">Recordar datos</string>
     <string-array name="plataformas">
         <item>Google</item>
         <item>Github</item>
