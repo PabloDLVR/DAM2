@@ -11,12 +11,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -169,13 +171,12 @@ public class formController implements Initializable {
                     System.out.println("No hay ningun usuario seleccionado");
                     Stage ventanaDialogo = new Stage();
                     try {
-                        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/example" +
-                                "/formulario/view/dialogo-view.fxml"));
+                        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("dialogo-view.fxml"));
                         Scene scene = new Scene(loader.load());
                         ventanaDialogo.setScene(scene);
                         ventanaDialogo.setTitle("Confirmacion");
                         ventanaDialogo.setResizable(false);
-                        ventanaDialogo.initModality();
+                        ventanaDialogo.initModality(Modality.APPLICATION_MODAL);
                         ventanaDialogo.showAndWait();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -185,10 +186,27 @@ public class formController implements Initializable {
                 Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
                 System.out.println("Detalle del usuario seleccionado: ");
                 if (usuarioSeleccionado != null) {
-                    System.out.println(usuarioSeleccionado);
+                    Stage ventanaDetalle= new Stage();
+                    FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("detalle-view.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                        DialogoController controladorDialogo = loader.getController();
+                        controladorDialogo.setUsuario(usuarioSeleccionado);
+                        Scene scene = new Scene(root);
+                        ventanaDetalle.setScene(scene);
+                        ventanaDetalle.setTitle("Detalle Usuario");
+                        ventanaDetalle.setResizable(false);
+                        ventanaDetalle.initModality(Modality.APPLICATION_MODAL);
+                        ventanaDetalle.show();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else {
                     System.out.println("No hay ningun usuario seleccionado");
                 }
+            } else if (actionEvent.getSource() ==) {
+
             }
         }
     }
