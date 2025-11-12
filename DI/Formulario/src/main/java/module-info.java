@@ -12,6 +12,7 @@ module com.example.formulario {
     requires com.almasb.fxgl.all;
     requires lombok;
     requires java.desktop;
+    requires java.sql;
 
     opens com.example.formulario to javafx.fxml;
     exports com.example.formulario;

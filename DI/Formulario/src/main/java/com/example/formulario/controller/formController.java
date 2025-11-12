@@ -205,7 +205,12 @@ public class formController implements Initializable {
                 } else {
                     System.out.println("No hay ningun usuario seleccionado");
                 }
-            } else if (actionEvent.getSource() ==) {
+            } else if (actionEvent.getSource() == toggleLista) {
+                if (toggleLista.isSelected()) {
+                    panelGeneral.setRight(parteDerecha);
+                } else {
+                    panelGeneral.setRight(null);
+                }
 
             }
         }
