@@ -26,13 +26,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", correo='" + correo + '\'' +
-                ", localizacion='" + localizacion + '\'' +
-                ", edad=" + edad +
-                ", genero='" + genero + '\'' +
-                ", disponibilidad=" + disponibilidad +
-                '}';
+        return nombre;
     }
 }
