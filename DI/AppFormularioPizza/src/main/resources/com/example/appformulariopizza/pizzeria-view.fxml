@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="panelGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.appformulariopizza.controler.MainController">
+    <bottom>
+        <FlowPane alignment="BOTTOM_CENTER" columnHalignment="CENTER" prefHeight="58.0" prefWidth="600.0"
+                  BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="botonAgregar" mnemonicParsing="false" text="Realizar pedido">
+                    <FlowPane.margin>
+                        <Insets bottom="20.0"/>
+                    </FlowPane.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+            </children>
+        </FlowPane>
+    </bottom>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <TextField fx:id="textNombre" promptText="Introduce nombre">
+                    <cursor>
+                        <Cursor fx:constant="TEXT"/>
+                    </cursor>
+                </TextField>
+                <TextField fx:id="textTelefono" promptText="Introduce teléfono" GridPane.rowIndex="1">
+                    <cursor>
+                        <Cursor fx:constant="TEXT"/>
+                    </cursor>
+                </TextField>
+                <ComboBox fx:id="comboPizza" maxWidth="1.7976931348623157E308" prefWidth="150.0"
+                          promptText="Selecciona una pizza" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
+                <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.rowIndex="3">
+                    <children>
+                        <RadioButton fx:id="radioPequena" mnemonicParsing="false" text="Pequeña">
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </RadioButton>
+                        <RadioButton fx:id="radioMediana" mnemonicParsing="false" text="Mediana">
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </RadioButton>
+                        <RadioButton fx:id="radioFamiliar" mnemonicParsing="false" text="Familiar">
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </RadioButton>
+                    </children>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets right="10.0"/>
+            </BorderPane.margin>
+            <padding>
+                <Insets left="20.0" top="20.0"/>
+            </padding>
+        </GridPane>
+    </center>
+    <right>
+        <GridPane fx:id="panelDerecha" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <ListView fx:id="listView" maxHeight="1.7976931348623157E308" prefHeight="300.0" prefWidth="200.0">
+                    <padding>
+                        <Insets right="20.0"/>
+                    </padding>
+                    <GridPane.margin>
+                        <Insets right="20.0" top="20.0"/>
+                    </GridPane.margin>
+                </ListView>
+            </children>
+        </GridPane>
+    </right>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="20.0"/>
+            </BorderPane.margin>
+            <menus>
+                <Menu mnemonicParsing="false" text="Pedidos">
+                    <items>
+                        <MenuItem fx:id="menuDetalle" mnemonicParsing="false" text="Realizar Pedido">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="ENTER" control="ANY" meta="UP" shift="UP" shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>
