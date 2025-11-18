@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
+            prefWidth="500.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appcalculadora.controler.MainControler">
+
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Archivo">
+                    <items>
+                        <MenuItem fx:id="menuCientifica" mnemonicParsing="false" text="Calculadora Científica">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP"
+                                                    shortcut="UP"/>
+                            </accelerator>
+                        </MenuItem>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <left>
+        <ListView fx:id="historialListView" prefWidth="150.0"
+                  style="-fx-background-color: #34495e; -fx-border-color: #2c3e50; -fx-border-width: 0 1 0 0;"
+                  BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </ListView>
+    </left>
+
+    <center>
+        <GridPane fx:id="gridPanel" BorderPane.alignment="CENTER_RIGHT" hgap="8.0" vgap="8.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="80.0" valignment="CENTER" vgrow="NEVER"/>
+                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+
+            <Label fx:id="pantalla" alignment="CENTER_RIGHT" text="0" maxWidth="Infinity" minHeight="50.0"
+                   style="-fx-background-color: #333333; -fx-text-fill: white; -fx-font-size: 30px; -fx-background-radius: 5;"
+                   GridPane.columnIndex="0" GridPane.columnSpan="4" GridPane.rowIndex="0">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Label>
+
+            <Button fx:id="botonAC" mnemonicParsing="false" text="AC" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #a5a5a5; -fx-text-fill: #1f1f1f; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Button fx:id="botonBorrar" mnemonicParsing="false" text="⌫" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #a5a5a5; -fx-text-fill: #1f1f1f; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Button fx:id="botonPorciento" mnemonicParsing="false" text="\%" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #a5a5a5; -fx-text-fill: #1f1f1f; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <Button fx:id="botonDivi" mnemonicParsing="false" text="÷" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #ff9500; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <Button fx:id="boton7" mnemonicParsing="false" text="7" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Button fx:id="boton8" mnemonicParsing="false" text="8" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Button fx:id="boton9" mnemonicParsing="false" text="9" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <Button fx:id="botonPor" mnemonicParsing="false" text="×" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #ff9500; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+            <Button fx:id="botonIgual" mnemonicParsing="false" text="=" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #ff9500; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+            <Button fx:id="boton4" mnemonicParsing="false" text="4" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Button fx:id="boton5" mnemonicParsing="false" text="5" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Button fx:id="boton6" mnemonicParsing="false" text="6" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+            <Button fx:id="botonMenos" mnemonicParsing="false" text="−" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #ff9500; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+            <Button fx:id="boton1" mnemonicParsing="false" text="1" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Button fx:id="boton2" mnemonicParsing="false" text="2" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <Button fx:id="boton3" mnemonicParsing="false" text="3" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+            <Button fx:id="botonMas" mnemonicParsing="false" text="+" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #ff9500; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+
+            <Button fx:id="boton0" mnemonicParsing="false" text="0" maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5; -fx-alignment: center-left; -fx-padding: 0 0 0 25px;"
+                    GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5"/>
+            <Button fx:id="botonPunto" mnemonicParsing="false" text="." maxWidth="Infinity" maxHeight="Infinity"
+                    style="-fx-background-color: #505050; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 5;"
+                    GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+        </GridPane>
+    </center>
+</BorderPane>
