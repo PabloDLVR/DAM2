@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Examen_Android</string>
+    <string-array name="gasoilina_array">
+        <item>Gasolina</item>
+        <item>Diésel</item>
+        <item>Híbrido</item>
+        <item>Eléctrico</item>
+    </string-array>
+</resources>
