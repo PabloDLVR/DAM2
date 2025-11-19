@@ -11,6 +11,9 @@ module com.example.examen_javafx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires static lombok;
+    requires java.desktop;
+    requires com.example.examen_javafx;
 
     opens com.example.examen_javafx to javafx.fxml;
     exports com.example.examen_javafx;
