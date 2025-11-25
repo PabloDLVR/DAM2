@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listas.adapter.AdapteProducto
 import com.example.listas.databinding.ActivityMainBinding
@@ -26,9 +27,17 @@ class MainActivity : AppCompatActivity() {
             )
         )
         adapteProducto = AdapteProducto(lista, this)
-        binding.recyclerProductos.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
-                false)
-        binding.recyclerProductos.adapter = adapteProducto
+
+        if (resources.configuration.orientation == 1) {
+            binding.recyclerProductos.layoutManager =
+                LinearLayoutManager(
+                    this, LinearLayoutManager.VERTICAL,
+                    false
+                )
+        } else {
+            binding.recyclerProductos.layoutManager =
+                GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false)
+            binding.recyclerProductos.adapter = adapteProducto
+        }
     }
 }
