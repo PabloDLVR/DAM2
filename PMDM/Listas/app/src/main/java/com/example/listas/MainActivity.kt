@@ -5,14 +5,30 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.listas.adapter.AdapteProducto
 import com.example.listas.databinding.ActivityMainBinding
+import com.example.listas.model.Producto
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapteProducto: AdapteProducto
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+        val lista: ArrayList<Producto> = arrayListOf(
+            Producto(
+                1, "Nombre",
+                12, 10.0, "Descripcion", "Categoria",
+                "Imagen"
+            )
+        )
+        adapteProducto = AdapteProducto(lista, this)
+        binding.recyclerProductos.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
+                false)
+        binding.recyclerProductos.adapter = adapteProducto
     }
 }
