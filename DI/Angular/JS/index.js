@@ -34,25 +34,27 @@ if(respuesta==true){
     alert("El usuario ha pulsado cancelar")
 } */
 let nombre = prompt("Porfavor itroduce tu nombre");
-let respuesta = true
+console.log(`El nombre introducido es : ${nombre}`);
 
-while(respuesta){
-    let op1 = prompt("Porfavor itroduce el pimer operando");
-    let op2 = prompt("Porfavor itroduce el segundo operando");
+    let op1 = parseInt(prompt("Porfavor itroduce el pimer operando"));
+    let op2 = parseInt(prompt("Porfavor itroduce el segundo operando"));
+    let operando=prompt("Introduce que operacion quieres hacer (+,-,+,/)")
 
-    if(isNaN(op1) && isNaN(op2)){
-        
-    }else{
+    if(operando == "+"){
         let suma = op1+op2;
+        console.log(`El resultado de sumar es ${suma}`);
+    }else if(operando == "-"){
         let resta = op1-op2;
+        console.log(`El resultado de restar es ${resta}`);
+    }else if(operando == "*"){
         let multiplicar = op1*op2;
+        console.log(`El resultado de multiplicar es ${multiplicar}`);
+    }else if(operando=="/"){
         let division = op1/op2;
-        console.log(`El resultado de suma es ${suma}`);
-        console.log(`El resultado de suma es ${resta}`);
-        console.log(`El resultado de suma es ${multiplicar}`);
-        console.log(`El resultado de suma es ${division}`);
-        
+        console.log(`El resultado de dividir es ${division}`);
     }
-}
+    
+    
+
 
 
