@@ -19,7 +19,6 @@ function realizarCalculoFantasma(op1) {
     //hay 4 argumentos, 3 fantasmas
     //la suma de todos es 10
     suma=0
-    
     for (let i = 0; i < arguments.length; i++) {
         console.log(i);
     }
