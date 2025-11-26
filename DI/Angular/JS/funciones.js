@@ -24,8 +24,6 @@ function realizarCalculoFantasma(op1) {
         console.log(i);
     }
 }
-
 realizarCalculoFantasma(1,2,3,4)
-suma
 /* console.log(`La suma con retorn y default es: ${realizarCalculoDefecto(5)}`); */
 /* console.log(`El resultado de la operacion con retorno es: ${realizarCalculoRetorno(4,5)}`); */
