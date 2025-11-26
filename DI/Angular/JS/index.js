@@ -1,0 +1,1 @@
+console.log("Esto se ejecuta desde la carpeta JS")
