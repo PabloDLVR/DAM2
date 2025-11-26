@@ -37,7 +37,7 @@ let nombre = prompt("Porfavor itroduce tu nombre");
 console.log(`El nombre introducido es : ${nombre}`);
 
     let op1 = parseInt(prompt("Porfavor itroduce el pimer operando"));
-    let op2 = parseInt(prompt("Porfavor itroduce el segundo operando"));
+    let op2 = parseInt(prompt("Porfavor itroduce el segundo operando"));//Mejor usar Number en vez d parseInt
     let operando=prompt("Introduce que operacion quieres hacer (+,-,+,/)")
 
     if(operando == "+"){
