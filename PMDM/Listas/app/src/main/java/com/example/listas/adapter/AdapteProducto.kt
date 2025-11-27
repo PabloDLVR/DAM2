@@ -5,13 +5,16 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.listas.R
 import com.example.listas.databinding.ItemProductoBinding
 import com.example.listas.model.Producto
 import com.example.listas.model.SecondActivity
 import com.google.android.material.snackbar.Snackbar
+import java.io.Serializable
 
 class AdapteProducto(var lista: ArrayList<Producto>, var contexto: Context) :
-    RecyclerView.Adapter<AdapteProducto.MyHolder>() {
+    RecyclerView.Adapter<AdapteProducto.MyHolder>(), Serializable {
     inner class MyHolder(var binding: ItemProductoBinding) : RecyclerView.ViewHolder(binding.root)
 
     //Crea un holder de la clase anidada
@@ -30,11 +33,12 @@ class AdapteProducto(var lista: ArrayList<Producto>, var contexto: Context) :
         position: Int
     ) {
         val producto: Producto = lista[position]
+        Glide.with(contexto).load(producto.imagen).placeholder(R.drawable.tienda)
+            .into(holder.binding.imageView)
         holder.binding.textView2.text = producto.nombre
         holder.binding.botonDetalles.setOnClickListener {
-            val intent = Intent(contexto, SecondActivity::class.java).apply {
-                putExtra("Producto", producto)
-            }
+            val intent = Intent(contexto, SecondActivity::class.java)
+            intent.putExtra("Producto",producto)
             contexto.startActivity(intent)
             Snackbar.make(
                 holder.binding.root,

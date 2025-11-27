@@ -1,5 +1,7 @@
 package com.example.listas.model
 
+import java.io.Serializable
+
 class Producto(
     var id: Int,
     var nombre: String,
@@ -8,6 +10,6 @@ class Producto(
     var descripcion: String,
     var categoria: String,
     var imagen: String
-) {
+) : Serializable{
 
 }
