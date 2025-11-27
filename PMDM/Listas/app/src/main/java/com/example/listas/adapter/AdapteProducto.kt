@@ -33,7 +33,7 @@ class AdapteProducto(var lista: ArrayList<Producto>, var contexto: Context) :
         holder.binding.textView2.text = producto.nombre
         holder.binding.botonDetalles.setOnClickListener {
             val intent = Intent(contexto, SecondActivity::class.java).apply {
-                putExtra("Producto",producto)
+                putExtra("Producto", producto)
             }
             contexto.startActivity(intent)
             Snackbar.make(

@@ -2,13 +2,15 @@ package Dia_1
 
 import java.net.DatagramPacket
 import java.net.DatagramSocket
-import java.net.InetAddress
-import java.nio.channels.DatagramChannel
 
 fun main() {
-    val datagrama = DatagramSocket()
-    val direccion = InetAddress.getByName("localhhost")
-    val paquete = DatagramPacket("hola".toByteArray(), "hola".toByteArray().size, direccion, 1234)
-
-    datagrama.send(paquete)
+    val datagrama = DatagramSocket(1234)
+    while (true) {
+        val buffer = ByteArray(1024)
+        val paqueterespuesta = DatagramPacket(buffer, buffer.size)
+        datagrama.receive(paqueterespuesta)
+        println(paqueterespuesta.address.hostAddress)
+        val cadenafinal = String(paqueterespuesta.data, 0, paqueterespuesta.length)
+        println(cadenafinal)
+    }
 }
