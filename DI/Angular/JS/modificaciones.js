@@ -1,39 +1,11 @@
-/* /* let botonAgregar=document.querySelector("#btnAgregar")//Buscar elementos del html
- *//* let botones=document.querySelectorAll("button")//Buscar todos los elementos con la etiqueta que elijas
-console.log(botonAgregar);
-console.log(botones); */
-/* botonAgregar.addEventListener("click",()=>{console.log("Boton pulsado");
-}) */
-//Al pulsar agregar, saco por consola: Nombre, apellido y fecha pero si hay campos vacios que salte un alert
-//Al pulsar limpiar, que se limpien los campos input
-/* let botonAgregar=document.querySelector("button")
-let inputNombre=document.querySelector("#inputNombre")
-let inputApellido=document.querySelector("#inputApellido")
-let inputFecha=document.querySelector("#inputFecha")
- botonAgregar=addEventListener("click",(ev)=>{
-    let Nombre=inputNombre.value;
-    let Apellido=inputApellido.value;
-    let Fecha=inputFecha.value;
-    console.log(`nombre ${Nombre}`);
-    console.log(`Apellido ${Apellido}`);
-    console.log(`Fecha ${Fecha}`);
-    
-}) */
-
-/*     function lanzarDialogo(parms) {
-        Swal.fire({
-  title: title,
-  text: text,
-  icon: icon
-});
-    } */ 
-
 let botonAgregar = document.querySelector("#btnAgregar");
 let botonLimpiar = document.querySelector("#btnLimpiar");
+let botonVaciar=document.querySelector('#btnVaciar')
 let inputNombre = document.querySelector("#inputNombre");
 let inputApellido = document.querySelector("#inputApellido");
 let inputFecha = document.querySelector("#inputFecha");
 let listaAgregados = document.querySelector("#divAgregados ul");
+
 botonAgregar.addEventListener("click", (ev) => {
   let nombre = inputNombre.value;
   let apellido = inputApellido.value;
@@ -43,7 +15,7 @@ botonAgregar.addEventListener("click", (ev) => {
   if (nombre.length == 0 || apellido.length == 0 || fecha.length == 0) {
     lanzarDialogo("Error", "Faltan datos", "warning");
   } else {
-    agregarLi(nombre,apellido,fecha);
+    agregarLi(nombre, apellido, fecha);
   }
 });
 
@@ -66,10 +38,52 @@ function lanzarDialogo(title, text, icon) {
 }
 
 function agregarLi(nombre, apellido, fecha) {
-    listaAgregados.innerHTML='<h1 class="animate__animated animate__bounce">An animated element</h1>'
-  lanzarDialogo(
+  /* listaAgregados.innerHTML += `<li
+            class="animate__animated animate__fadeInRight list-group-item d-flex justify-content-between align-items-start"
+          >
+            ${nombre} ${apellido} ${fecha}
+          </li>`; */
+
+  let nodoLI = document.createElement("li");
+  let nodoBoton = document.createElement("button");
+
+  nodoBoton.classList.add("btn", "btn-danger");
+  nodoBoton.innerText = "Borrar";
+  nodoBoton.addEventListener("click", (e) => {
+    /* nodoLI.remove(); */
+    nodoLI.classList.remove("animate_fadeInRight")
+    nodoLI.classList.add("animate__wobble")
+    setTimeout(()=>{
+      nodoLI.remove()
+    },600)
+  },600);
+
+
+  botonVaciar.addEventListener("click",(ev)=>{
+    /* listaAgregados.remove(); */
+    listaAgregados.innerHTML=""
+  })
+
+  nodoLI.innerText = `${nombre} ${apellido} ${fecha}`;
+  /* nodoLI.className =
+    "animate__animated animate__fadeInRight list-group-item d-flex justify-content-between align-items-start"; */
+  nodoLI.classList.add(
+    "animate__animated",
+    "animate__fadeInRight",
+    "list-group-item",
+    "d-flex",
+    "justify-content-between",
+    "align-items-start"
+  );
+
+  nodoLI.appendChild(nodoBoton);
+
+  listaAgregados.appendChild(nodoLI);
+  limpiarCampos(inputNombre, inputApellido, inputFecha);
+
+  /* lanzarDialogo(
     "Agregado correctamente",
     `Usuario con nombre ${nombre} agregado correctamente`,
     "success"
-  );
+  ); */
 }
