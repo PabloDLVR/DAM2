@@ -1,66 +1,83 @@
-package com.example.listas.adapter
+package com.example.tienda.adapter
 
+import android.R
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.listas.R
 import com.example.listas.databinding.ItemProductoBinding
 import com.example.listas.model.Producto
-import com.example.listas.model.SecondActivity
-import com.google.android.material.snackbar.Snackbar
-import java.io.Serializable
+import com.example.listas.dataset.DataSet
+import com.example.listas.ui.activities.DetalleActivity
 
-class AdapteProducto(var lista: ArrayList<Producto>, var contexto: Context) :
-    RecyclerView.Adapter<AdapteProducto.MyHolder>(), Serializable {
+
+class AdapterProducto(var lista: ArrayList<Producto>, var contexto: Context) :
+    RecyclerView.Adapter<AdapterProducto.MyHolder>() {
+    var listener: OnProductoCarritoListener
+
+    init {
+        listener = contexto as OnProductoCarritoListener
+    }
+
+
     inner class MyHolder(var binding: ItemProductoBinding) : RecyclerView.ViewHolder(binding.root)
 
-    //Crea un holder de la clase anidada
+    // crea un holder de la clase anidada
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MyHolder {
-        var binding: ItemProductoBinding = ItemProductoBinding
-            .inflate(LayoutInflater.from(contexto), parent, false)
+        var binding: ItemProductoBinding =
+            ItemProductoBinding.inflate(LayoutInflater.from(contexto), parent, false)
         return MyHolder(binding)
     }
 
-    //Asociar los elementos con el holder asociado
+    // asociar los elementos (posicion) con el holder asociado
     override fun onBindViewHolder(
         holder: MyHolder,
         position: Int
     ) {
+
         val producto: Producto = lista[position]
-        Glide.with(contexto).load(producto.imagen).placeholder(R.drawable.tienda)
-            .into(holder.binding.imageView)
-        holder.binding.textView2.text = producto.nombre
-        holder.binding.botonDetalles.setOnClickListener {
-            val intent = Intent(contexto, SecondActivity::class.java)
-            intent.putExtra("Producto",producto)
+        Glide.with(contexto)
+            .load(producto.imagen)
+            .placeholder(R.drawable.producto)
+            .into(holder.binding.imagenFila)
+
+
+        holder.binding.nombreFila.text = producto.nombre
+        holder.binding.btnDetalle.setOnClickListener {
+            val intent: Intent = Intent(contexto, DetalleActivity::class.java)
+            intent.putExtra("producto", producto)
             contexto.startActivity(intent)
-            Snackbar.make(
-                holder.binding.root,
-                "El precio del producto es ${producto.precio}",
-                Snackbar.LENGTH_SHORT
-            ).show()
         }
-        holder.binding.botonLogin.setOnClickListener {
-            Snackbar.make(
-                holder.binding.root,
-                "El precio del articulo es ${producto.precio}",
-                Snackbar.LENGTH_LONG
-            ).show()
+        holder.binding.btnCompra.setOnClickListener {
+            DataSet.addProducto(producto)
+            // lanzar la accion de add carrito
+            listener.actualizarContadorCarrito()
         }
     }
 
+    // cuantos elementso tendre que pintar
     override fun getItemCount(): Int {
         return lista.size
     }
+
+    fun chageList(lista: ArrayList<Producto>){
+        lista.clear()
+        this.lista = lista;
+        notifyDataSetChanged()
+        // notificaciones individuales
+    }
+
+    interface OnProductoCarritoListener {
+        fun actualizarContadorCarrito(): Unit
+
+
+    }
+
 }
-
-//Cuantos elementos tendre que pintar
-
 
 
