@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
             {
                 val gson = Gson()
                 val usersArray: JSONArray = it.getJSONArray("users")
+                for (i in 0 .. usersArray.length()-1)
+
                 Log.v("Conexion", it.toString())
                 //Log.v("Conexion", "Los datos se obtienen de forma correcta")
             },
