@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.13.2")
     implementation("com.android.volley:volley:1.2.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

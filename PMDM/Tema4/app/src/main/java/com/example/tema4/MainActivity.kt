@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.tema4.databinding.ActivityMainBinding
+import com.google.gson.Gson
+import org.json.JSONArray
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,11 +23,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun realizarPeticionJSON() {
-        val url = "https://dummyjson.co/users"
+        val url = "https://dummyjson.com/users"
         //1. Realizar la peticion de forma correcta
         val peticionJSON: JsonObjectRequest = JsonObjectRequest(
             url,
             {
+                val gson = Gson()
+                val usersArray: JSONArray = it.getJSONArray("users")
                 Log.v("Conexion", it.toString())
                 //Log.v("Conexion", "Los datos se obtienen de forma correcta")
             },
