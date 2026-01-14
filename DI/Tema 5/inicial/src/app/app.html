@@ -5,9 +5,18 @@
     class="form-control mt-2 mb-2"
     placeholder="Introduce el numero de la variable"
     #inputNota
+    [(ngModel)]="nombre"
   />
   <button class="btn btn-primary" (click)="pulsarComenzar(inputNota.value)">
     Pulsa para comenzar
   </button>
   <p class="mt-2 mb-2">{{ nota }}</p>
+
+  <h4 class="mt-2 mb-2">Generacon de componentes</h4>
+
+  <div class="row">
+    <div class="col"><app-decisiones></app-decisiones></div>
+    <div class="col"><app-selecciones></app-selecciones></div>
+    <div class="col"><app-root></app-root></div>
+  </div>
 </main>
