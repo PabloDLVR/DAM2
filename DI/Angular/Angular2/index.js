@@ -2,7 +2,7 @@ let boton = document.querySelector("#btnAgregar")
 let inputNombre=document.querySelector("#inputnombre")
 let inputFecha=document.querySelector("#inputFecha")
 let selectPrio=document.querySelector("#selectPrio")
-let parrafo=document.querySelector("#contenido")
+let listaTareas=document.querySelector("#selectPrio")
 
 let tareas=[];
 
