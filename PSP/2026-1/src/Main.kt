@@ -1,24 +1,26 @@
 import org.apache.commons.net.ftp.FTP
 import org.apache.commons.net.ftp.FTPClient
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
 fun main() {
     val ftp = FTPClient()
     try {
-        ftp.connect("ftp.rediris.es", 21)
-        ftp.login("Javier", "123456")
+        ftp.connect("127.0.0.1", 21)
+        ftp.login("DAM2026", "")
         ftp.enterLocalPassiveMode()
         ftp.setFileType(FTP.BINARY_FILE_TYPE)
-        //ftp.logout()
 
-        val ficheros = ftp.listFiles("/sites")
-        for (fichero in ficheros) {
-            if (fichero.isFile) {
-                println("Fichero :${fichero.name} Tamaño: ${fichero.size} bytes")
-            } else if (fichero.isDirectory) {
-                println("Directorio: ${fichero.name}")
-            }
-        }
+
+        val output = FileOutputStream("C:\\Users\\pablo\\Desktop\\FTP\\Osky.exe")
+        ftp.retrieveFile("/MONOS/Virus.exe", output)
+        output.close()
+
+
     } catch (e: Exception) {
         e.printStackTrace()
+    } finally {
+        ftp.logout()
+        ftp.disconnect()
     }
 }
