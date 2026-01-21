@@ -1,188 +1,243 @@
-import os
-import pickle
 
-class Nodo:
-    """Nodo para lista enlazada que almacena un dato y referencia al siguiente nodo."""
-    def __init__(self, dato):
-        self.dato = dato
-        self.siguiente = None
 
-class Pila:
-    """Pila implementada con lista enlazada."""
-    def __init__(self):
-        self.tope = None
-        self.tamanio = 0
+from __future__ import annotations
+from typing import Optional, Dict, Any
+from datetime import datetime
 
-    def apilar(self, dato):
-        """Apila un nuevo elemento en la pila."""
-        nuevo_nodo = Nodo(dato)
-        nuevo_nodo.siguiente = self.tope
-        self.tope = nuevo_nodo
-        self.tamanio += 1
-        print(f"'{dato}' ha sido apilado.")
 
-    def desapilar(self):
-        """Desapila el elemento en el tope y lo retorna."""
-        if self.pilavacia():
-            print("La pila está vacía, no se puede desapilar.")
-            return None
-        dato = self.tope.dato
-        self.tope = self.tope.siguiente
-        self.tamanio -= 1
-        print(f"'{dato}' ha sido desapilado.")
-        return dato
+class PilaEnlazada:
+    """
+    Pila LIFO usando lista enlazada simple.
+    Cada nodo es un diccionario: {'dato': <marca>, 'sig': <nodo_siguiente>}
+    El tope es self.tope (referencia al nodo superior).
+    """
 
-    def pilavacia(self):
-        """Retorna True si la pila está vacía, False en caso contrario."""
+    def __init__(self) -> None:
+        self.tope: Optional[Dict[str, Any]] = None
+
+    # ----------------------------
+    # Operaciones básicas (pila)
+    # ----------------------------
+    def pilavacia(self) -> bool:
+        """Devuelve True si la pila está vacía."""
         return self.tope is None
 
-    def obtener_tope(self):
-        """Retorna el dato en el tope sin desapilarlo."""
+    def apilar(self, marca: str) -> None:
+        """Push: agrega una marca al tope."""
+        marca = marca.strip()
+        if not marca:
+            raise ValueError("La marca no puede estar vacía.")
+
+        nodo = {"dato": marca, "sig": self.tope}
+        self.tope = nodo
+
+    def desapilar(self) -> Optional[str]:
+        """Pop: elimina el elemento del tope y lo devuelve. Si está vacía, devuelve None."""
         if self.pilavacia():
-            print("La pila está vacía, no hay tope.")
             return None
-        return self.tope.dato
 
-    def imprimirpila(self):
-        """Muestra todos los elementos de la pila."""
+        nodo = self.tope
+        self.tope = nodo["sig"]
+        return nodo["dato"]
+
+    def tope_pila(self) -> Optional[str]:
+        """Top/Peek: consulta el elemento del tope sin eliminarlo."""
         if self.pilavacia():
-            print("La pila está vacía.")
+            return None
+        return self.tope["dato"]
+
+    # ----------------------------
+    # Funciones extra solicitadas
+    # ----------------------------
+    def imprimirpila(self) -> None:
+        """Muestra por pantalla todos los elementos de la pila (desde el tope hacia abajo)."""
+        if self.pilavacia():
+            print("Pila vacía.")
             return
+
+        print("Pila (de TOPE a BASE):")
         actual = self.tope
-        elementos = []
-        while actual:
-            elementos.append(actual.dato)
-            actual = actual.siguiente
-        print("Pila (tope -> base):", " -> ".join(elementos))
+        i = 1
+        while actual is not None:
+            print(f"  {i}. {actual['dato']}")
+            actual = actual["sig"]
+            i += 1
 
-    def contar(self):
-        """Muestra el número de elementos de la pila."""
-        print(f"La pila tiene {self.tamanio} elementos.")
-
-    def invertirpila(self):
-        """Retorna una nueva pila con los elementos invertidos."""
-        pila_invertida = Pila()
+    def contar(self) -> int:
+        """Devuelve el número de elementos de la pila."""
+        c = 0
         actual = self.tope
-        while actual:
-            pila_invertida.apilar(actual.dato)
-            actual = actual.siguiente
-        return pila_invertida
+        while actual is not None:
+            c += 1
+            actual = actual["sig"]
+        return c
 
-    def copiarpila(self):
-        """Retorna una copia exacta de la pila."""
-        pila_copia = Pila()
-        # Usamos una lista auxiliar para preservar el orden
-        elementos = []
-        actual = self.tope
-        while actual:
-            elementos.append(actual.dato)
-            actual = actual.siguiente
-        # Apilamos en orden inverso para mantener la estructura original
-        for dato in reversed(elementos):
-            pila_copia.apilar(dato)
-        return pila_copia
-
-    def vaciarpila(self):
+    def vaciarpila(self) -> None:
         """Vacía completamente la pila."""
-        while not self.pilavacia():
-            self.desapilar()
-        print("La pila ha sido vaciada por completo.")
+        self.tope = None
 
-    def guardarpila(self, nombre_archivo="pila_guardada.pkl"):
-        """Guarda la pila en un archivo usando pickle."""
+    def invertirpila(self) -> PilaEnlazada:
+
+        invertida = PilaEnlazada()
+        # Recorremos y guardamos en una lista para poder invertir el orden sin romper la pila original
         elementos = []
         actual = self.tope
-        while actual:
-            elementos.append(actual.dato)
-            actual = actual.siguiente
-        datos = {
-            'elementos': elementos,
-            'tamanio': self.tamanio,
-        }
-        with open(nombre_archivo, 'wb') as archivo:
-            pickle.dump(datos, archivo)
-        print(f"Pila guardada en '{nombre_archivo}'.")
+        while actual is not None:
+            elementos.append(actual["dato"])
+            actual = actual["sig"]
+            
+        for e in elementos:
+            invertida.apilar(e)
 
-def cargarpila(nombre_archivo="pila_guardada.pkl"):
-    """Carga una pila desde un archivo."""
-    if not os.path.exists(nombre_archivo):
-        print("El archivo no existe.")
-        return None
-    with open(nombre_archivo, 'rb') as archivo:
-        datos = pickle.load(archivo)
-    pila = Pila()
-    for dato in reversed(datos['elementos']):
-        pila.apilar(dato)
-    pila.tamanio = datos['tamanio']
-    print(f"Pila cargada desde '{nombre_archivo}'.")
-    return pila
+        return invertida
 
-def mostrar_menu():
-    """Muestra el menú de opciones."""
-    print("\n" + "="*40)
-    print("MENÚ DE PILAS DE MARCAS DE COCHES")
-    print("="*40)
-    print("1. Apilar una marca")
-    print("2. Desapilar")
-    print("3. Ver tope")
-    print("4. Imprimir pila")
-    print("5. Contar elementos")
-    print("6. Invertir pila")
-    print("7. Copiar pila")
-    print("8. Vaciar pila")
-    print("9. Guardar pila en archivo")
-    print("10. Cargar pila desde archivo")
-    print("11. Salir")
-    print("="*40)
+    def copiarpila(self) -> PilaEnlazada:
+        """
+        Copia en una pila destino el contenido de una pila origen en el mismo orden,
+        creando dos pilas exactas (mismo tope->base).
 
-def main():
-    pila = Pila()
-    while True:
-        mostrar_menu()
-        opcion = input("Seleccione una opción: ").strip()
-        if opcion == "1":
-            marca = input("Ingrese la marca de coche a apilar: ").strip()
-            if marca:
-                pila.apilar(marca)
+        Estrategia:
+        - Recolectar elementos de origen (tope->base) en lista.
+        - Apilar en destino en orden inverso para conservar el orden original.
+        """
+        copia = PilaEnlazada()
+        elementos = []
+        actual = self.tope
+        while actual is not None:
+            elementos.append(actual["dato"])
+            actual = actual["sig"]
+
+        # Para mantener el mismo orden (mismo tope), debemos apilar desde la base hacia el tope:
+        # Si elementos = [A, B, C] con A=tope, apilar en orden inverso: C, B, A -> copia con A=tope
+        for e in reversed(elementos):
+            copia.apilar(e)
+
+        return copia
+
+    def guardarpila(self, nombre_fichero: str = "pila.txt") -> None:
+        """
+        Guarda en un fichero el contenido de la pila y la info relevante.
+        El formato lo decide el desarrollador (según enunciado).
+        """
+        with open(nombre_fichero, "w", encoding="utf-8") as f:
+            f.write("PILA (Stack) - Implementada con lista enlazada\n")
+            f.write(f"Fecha/hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"Elementos: {self.contar()}\n")
+            f.write("Contenido (de TOPE a BASE):\n")
+            f.write("-" * 40 + "\n")
+
+            if self.pilavacia():
+                f.write("Pila vacía.\n")
             else:
-                print("Error: La marca no puede estar vacía.")
-        elif opcion == "2":
-            pila.desapilar()
-        elif opcion == "3":
-            tope = pila.obtener_tope()
-            if tope:
-                print(f"El tope de la pila es: {tope}")
-        elif opcion == "4":
-            pila.imprimirpila()
-        elif opcion == "5":
-            pila.contar()
-        elif opcion == "6":
-            pila_invertida = pila.invertirpila()
-            print("Pila invertida creada. Mostrando pila invertida:")
-            pila_invertida.imprimirpila()
-        elif opcion == "7":
-            pila_copia = pila.copiarpila()
-            print("Copia de la pila creada. Mostrando copia:")
-            pila_copia.imprimirpila()
-        elif opcion == "8":
-            pila.vaciarpila()
-        elif opcion == "9":
-            nombre = input("Nombre del archivo (Enter para 'pila_guardada.pkl'): ").strip()
-            if not nombre:
-                nombre = "pila_guardada.pkl"
-            pila.guardarpila(nombre)
-        elif opcion == "10":
-            nombre = input("Nombre del archivo (Enter para 'pila_guardada.pkl'): ").strip()
-            if not nombre:
-                nombre = "pila_guardada.pkl"
-            pila_cargada = cargarpila(nombre)
-            if pila_cargada:
-                pila = pila_cargada
-        elif opcion == "11":
-            print("Saliendo del programa. ¡Hasta luego!")
-            break
-        else:
-            print("Opción no válida. Intente nuevamente.")
+                actual = self.tope
+                i = 1
+                while actual is not None:
+                    f.write(f"{i}. {actual['dato']}\n")
+                    actual = actual["sig"]
+                    i += 1
+
+            f.write("-" * 40 + "\n")
+
+        print(f"Pila guardada en: {nombre_fichero}")
+
+
+# ----------------------------
+# Menú de la aplicación
+# ----------------------------
+def pedir_texto(msg: str) -> str:
+    return input(msg).strip()
+
+
+def menu() -> None:
+    print("\n===============================")
+    print("   PILAS (Stack) - Menú")
+    print("===============================")
+    print("1) Apilar (push)")
+    print("2) Desapilar (pop)")
+    print("3) Tope (peek/top)")
+    print("4) ¿Pila vacía? (isEmpty)")
+    print("5) Imprimir pila")
+    print("6) Contar elementos")
+    print("7) Invertir pila (nueva pila)")
+    print("8) Copiar pila (nueva pila exacta)")
+    print("9) Vaciar pila")
+    print("10) Guardar pila en fichero")
+    print("0) Salir")
+    print("===============================")
+
+
+def main() -> None:
+    pila = PilaEnlazada()
+
+    while True:
+        menu()
+        op = pedir_texto("Elige una opción: ")
+
+        try:
+            if op == "0":
+                print("Saliendo...")
+                break
+
+            elif op == "1":
+                marca = pedir_texto("Introduce la marca de coche a apilar: ")
+                pila.apilar(marca)
+                print("Elemento apilado correctamente.")
+
+            elif op == "2":
+                x = pila.desapilar()
+                if x is None:
+                    print("No se puede desapilar: pila vacía.")
+                else:
+                    print(f"Elemento desapilado: {x}")
+
+            elif op == "3":
+                x = pila.tope_pila()
+                if x is None:
+                    print("Pila vacía. No hay tope.")
+                else:
+                    print(f"Tope: {x}")
+
+            elif op == "4":
+                print("Pila vacía." if pila.pilavacia() else "Pila con elementos.")
+
+            elif op == "5":
+                pila.imprimirpila()
+
+            elif op == "6":
+                print(f"Número de elementos: {pila.contar()}")
+
+            elif op == "7":
+                inv = pila.invertirpila()
+                print("Pila invertida creada (sin modificar la original).")
+                print("Original:")
+                pila.imprimirpila()
+                print("Invertida:")
+                inv.imprimirpila()
+
+            elif op == "8":
+                copia = pila.copiarpila()
+                print("Copia exacta creada (sin modificar la original).")
+                print("Original:")
+                pila.imprimirpila()
+                print("Copia:")
+                copia.imprimirpila()
+
+            elif op == "9":
+                pila.vaciarpila()
+                print("Pila vaciada completamente.")
+
+            elif op == "10":
+                nombre = pedir_texto("Nombre del fichero (ENTER para 'pila.txt'): ")
+                if not nombre:
+                    nombre = "pila.txt"
+                pila.guardarpila(nombre)
+
+            else:
+                print("Opción no válida.")
+
+        except Exception as e:
+            print("Error:", e)
+
 
 if __name__ == "__main__":
     main()
