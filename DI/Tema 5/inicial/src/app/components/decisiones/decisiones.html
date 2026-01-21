@@ -1,1 +1,102 @@
 <h2>Componente decisiones</h2>
+<p>-Este componente mostrará un dato dependiendo de una condición</p>
+
+<ng-container>
+  @if (expression()) {
+    <p>La condicion de evaluacíon es true</p>
+  } @else {
+    <p>La condicion de evaluacíon es false</p>
+  }
+</ng-container>
+
+<button class="btn btn-primary" (click)="mostrar.set(!mostrar())">Toggle mostrar</button>
+@if (mostrar()) {
+  <p>El valor de mostrar es true</p>
+}
+
+<!-- Formulario de evaluación de candidatos -->
+<div class="candidate-form">
+  <h3>Evaluador de Candidatos</h3>
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+        [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+      />
+      @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+        <span class="invalid-feedback">El nombre es requerido (mínimo 2 caracteres)</span>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="apellido"
+        formControlName="apellido"
+        [class.is-invalid]="form.get('apellido')?.invalid && form.get('apellido')?.touched"
+      />
+      @if (form.get('apellido')?.invalid && form.get('apellido')?.touched) {
+        <span class="invalid-feedback">El apellido es requerido (mínimo 2 caracteres)</span>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad</label>
+      <input
+        type="number"
+        class="form-control"
+        id="edad"
+        formControlName="edad"
+        [class.is-invalid]="form.get('edad')?.invalid && form.get('edad')?.touched"
+      />
+      @if (form.get('edad')?.invalid && form.get('edad')?.touched) {
+        <span class="invalid-feedback">La edad es requerida (mínimo 18)</span>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="salario" class="form-label">Salario (€)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="salario"
+        formControlName="salario"
+        [class.is-invalid]="form.get('salario')?.invalid && form.get('salario')?.touched"
+      />
+      @if (form.get('salario')?.invalid && form.get('salario')?.touched) {
+        <span class="invalid-feedback">El salario es requerido y debe ser mayor a 0</span>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="experiencia" class="form-label">Años de experiencia</label>
+      <input
+        type="number"
+        class="form-control"
+        id="experiencia"
+        formControlName="experiencia"
+        [class.is-invalid]="form.get('experiencia')?.invalid && form.get('experiencia')?.touched"
+      />
+      @if (form.get('experiencia')?.invalid && form.get('experiencia')?.touched) {
+        <span class="invalid-feedback"
+          >Los años de experiencia son requeridos y deben ser mayor o igual a 0</span
+        >
+      }
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="evaluateCandidate()"
+      [disabled]="form.invalid"
+    >
+      Evaluar candidato
+    </button>
+  </form>
+</div>

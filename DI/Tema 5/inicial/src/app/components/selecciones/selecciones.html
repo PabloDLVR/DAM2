@@ -1,1 +1,21 @@
 <h2>Componente selecciones</h2>
+<p>-Este componente mostrará un dato dependiendo de la selección realizada</p>
+<span ngSwitch="">
+  <select [(ngModel)]="seleccion">
+    <option value="1">Opción 1</option>
+    <option value="2">Opción 2</option>
+    <option value="3">Opción 3</option>
+  </select>
+  <div *ngSwitchCase="'1'">
+    <p>Has seleccionado la opción 1</p>
+  </div>
+  <div *ngSwitchCase="'2'">
+    <p>Has seleccionado la opción 2</p>
+  </div>
+  <div *ngSwitchCase="'3'">
+    <p>Has seleccionado la opción 3</p>
+  </div>
+  <div *ngSwitchDefault>
+    <p>Por favor, selecciona una opción válida.</p>
+  </div>
+</span>
