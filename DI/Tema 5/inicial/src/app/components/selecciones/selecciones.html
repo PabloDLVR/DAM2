@@ -19,3 +19,193 @@
     <p>Por favor, selecciona una opción válida.</p>
   </div>
 </span>
+
+<!-- Formulario de compra -->
+<div class="purchase-form mt-5">
+  <h3>Formulario de Compra</h3>
+  <form [formGroup]="form">
+    <!-- Datos de compra básicos -->
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+        [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+      />
+      @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+        <span class="invalid-feedback">El nombre es requerido (mínimo 2 caracteres)</span>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="direccionEnvio" class="form-label">Dirección de Envío</label>
+      <input
+        type="text"
+        class="form-control"
+        id="direccionEnvio"
+        formControlName="direccionEnvio"
+        [class.is-invalid]="
+          form.get('direccionEnvio')?.invalid && form.get('direccionEnvio')?.touched
+        "
+      />
+      @if (form.get('direccionEnvio')?.invalid && form.get('direccionEnvio')?.touched) {
+        <span class="invalid-feedback"
+          >La dirección de envío es requerida (mínimo 5 caracteres)</span
+        >
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="direccionFacturacion" class="form-label">Dirección de Facturación</label>
+      <input
+        type="text"
+        class="form-control"
+        id="direccionFacturacion"
+        formControlName="direccionFacturacion"
+        [class.is-invalid]="
+          form.get('direccionFacturacion')?.invalid && form.get('direccionFacturacion')?.touched
+        "
+      />
+      @if (form.get('direccionFacturacion')?.invalid && form.get('direccionFacturacion')?.touched) {
+        <span class="invalid-feedback"
+          >La dirección de facturación es requerida (mínimo 5 caracteres)</span
+        >
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="coste" class="form-label">Coste (€)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="coste"
+        formControlName="coste"
+        [class.is-invalid]="form.get('coste')?.invalid && form.get('coste')?.touched"
+      />
+      @if (form.get('coste')?.invalid && form.get('coste')?.touched) {
+        <span class="invalid-feedback">El coste es requerido y debe ser mayor a 0</span>
+      }
+    </div>
+
+    <!-- Tipo de pago -->
+    <div class="mb-3">
+      <label for="tipoPago" class="form-label">Tipo de Pago</label>
+      <select class="form-control" id="tipoPago" formControlName="tipoPago">
+        <option value="ordinario">Pago Ordinario (Tarjeta)</option>
+        <option value="bizum">Bizum</option>
+        <option value="transferencia">Transferencia Bancaria</option>
+      </select>
+    </div>
+
+    <!-- Campos condicionales para Pago Ordinario -->
+    @if (paymentType() === 'ordinario') {
+      <div class="payment-section">
+        <h5>Datos de Tarjeta</h5>
+        <div class="mb-3">
+          <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+          <input
+            type="text"
+            class="form-control"
+            id="numeroTarjeta"
+            placeholder="1234 5678 9012 3456"
+            formControlName="numeroTarjeta"
+            [class.is-invalid]="
+              form.get('numeroTarjeta')?.invalid && form.get('numeroTarjeta')?.touched
+            "
+          />
+          @if (form.get('numeroTarjeta')?.invalid && form.get('numeroTarjeta')?.touched) {
+            <span class="invalid-feedback">Número de tarjeta inválido (mínimo 13 dígitos)</span>
+          }
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cvv" class="form-label">CVV</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cvv"
+              placeholder="123"
+              formControlName="cvv"
+              [class.is-invalid]="form.get('cvv')?.invalid && form.get('cvv')?.touched"
+            />
+            @if (form.get('cvv')?.invalid && form.get('cvv')?.touched) {
+              <span class="invalid-feedback">CVV inválido (3 dígitos)</span>
+            }
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="mesAnio" class="form-label">Mes/Año</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mesAnio"
+              placeholder="MM/YY"
+              formControlName="mesAnio"
+              [class.is-invalid]="form.get('mesAnio')?.invalid && form.get('mesAnio')?.touched"
+            />
+            @if (form.get('mesAnio')?.invalid && form.get('mesAnio')?.touched) {
+              <span class="invalid-feedback">Fecha requerida</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Campos condicionales para Bizum -->
+    @if (paymentType() === 'bizum') {
+      <div class="payment-section">
+        <h5>Datos de Bizum</h5>
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Número de Teléfono</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="telefono"
+            placeholder="+34 600 123 456"
+            formControlName="telefono"
+            [class.is-invalid]="form.get('telefono')?.invalid && form.get('telefono')?.touched"
+          />
+          @if (form.get('telefono')?.invalid && form.get('telefono')?.touched) {
+            <span class="invalid-feedback">Número de teléfono inválido (mínimo 9 dígitos)</span>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Campos condicionales para Transferencia -->
+    @if (paymentType() === 'transferencia') {
+      <div class="payment-section">
+        <h5>Datos de Transferencia</h5>
+        <div class="alert alert-info">Se aplicará un recargo del 5% por este método de pago</div>
+        <div class="mb-3">
+          <label for="numeroCuenta" class="form-label">Número de Cuenta (IBAN)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="numeroCuenta"
+            placeholder="ES91 1234 5678 9012 3456 7890"
+            formControlName="numeroCuenta"
+            [class.is-invalid]="
+              form.get('numeroCuenta')?.invalid && form.get('numeroCuenta')?.touched
+            "
+          />
+          @if (form.get('numeroCuenta')?.invalid && form.get('numeroCuenta')?.touched) {
+            <span class="invalid-feedback">Número de cuenta inválido (mínimo 10 caracteres)</span>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Botón de validación -->
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="validatePurchase()"
+      [disabled]="form.invalid"
+    >
+      Validar Compra
+    </button>
+  </form>
+</div>

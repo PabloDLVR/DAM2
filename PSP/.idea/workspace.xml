@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c19b0543-adc0-4b45-b357-83e5d279e73d" name="Changes" comment="" />
+    <list default="true" id="c19b0543-adc0-4b45-b357-83e5d279e73d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../DI/Tema 5/inicial/src/app/components/selecciones/selecciones.html" beforeDir="false" afterPath="$PROJECT_DIR$/../DI/Tema 5/inicial/src/app/components/selecciones/selecciones.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DI/Tema 5/inicial/src/app/components/selecciones/selecciones.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../DI/Tema 5/inicial/src/app/components/selecciones/selecciones.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,22 +20,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "PabloDLVR"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PabloDLVR&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/PabloDLVR/DAM2.git",
-    "accountId": "356a63d5-a498-4261-b4a0-87be68f7e04f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PabloDLVR/DAM2.git&quot;,
+    &quot;accountId&quot;: &quot;356a63d5-a498-4261-b4a0-87be68f7e04f&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="34SRJE8M06Lb6aP9gKSHANklnw8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,7 +51,10 @@
     "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/pablo/Documents/GitHub/DAM2/PSP"
   }
 }]]></component>
   <component name="TaskManager">
@@ -59,5 +66,13 @@
       <updated>1761204914219</updated>
     </task>
     <servers />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
