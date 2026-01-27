@@ -1,19 +1,15 @@
 <h2>Repeticiones</h2>
 <p>El for sirve para poder crear elementos de forma iterativa sobre un []</p>
 
-<div class="mb-3">
-  <label for="nombreInput" class="form-label">Nombre:</label>
-  <div class="input-group">
-    <input
-      id="nombreInput"
-      type="text"
-      class="form-control"
-      [(ngModel)]="nombreInput"
-      placeholder="Introduce un nombre"
-      (keyup.enter)="agregarUsuario()"
-    />
-    <button type="button" class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
-  </div>
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="nombreInput"
+    placeholder="Introduce un nombre"
+    (keyup.enter)="agregarUsuario()"
+  />
+  <button type="button" class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
 </div>
 
 <ul class="list-group">

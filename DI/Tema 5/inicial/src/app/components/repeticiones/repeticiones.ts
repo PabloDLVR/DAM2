@@ -13,20 +13,18 @@ export class Repeticiones {
   nombreInput = signal<string>('');
 
   agregarUsuario(): void {
-    const nombre = this.nombreInput().trim();
+    const nombre = this.nombreInput();
 
     if (!nombre) {
       Swal.fire({
-        icon: 'warning',
         title: 'Advertencia',
-        text: 'Por favor, introduce un nombre',
+        text: 'Introduce un nombre',
       });
       return;
     }
 
     if (this.usuarios().includes(nombre)) {
       Swal.fire({
-        icon: 'error',
         title: 'Error',
         text: 'El nombre ya está en la lista',
       });
@@ -35,11 +33,5 @@ export class Repeticiones {
 
     this.usuarios.update((usuarios) => [...usuarios, nombre]);
     this.nombreInput.set('');
-    Swal.fire({
-      icon: 'success',
-      title: 'Éxito',
-      text: `${nombre} ha sido agregado a la lista`,
-      timer: 1500,
-    });
   }
 }
