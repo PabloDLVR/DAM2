@@ -7,12 +7,14 @@ import { App } from './app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Decisiones } from './components/decisiones/decisiones';
 import { Selecciones } from './components/selecciones/selecciones';
+import { Repeticiones } from './components/repeticiones/repeticiones';
 
 @NgModule({
   declarations: [
     App,
     Decisiones,
-    Selecciones
+    Selecciones,
+    Repeticiones
   ],
   imports: [
     BrowserModule,
