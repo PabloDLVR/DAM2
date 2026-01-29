@@ -1,19 +1,58 @@
 <h2>Repeticiones</h2>
 <p>El for sirve para poder crear elementos de forma iterativa sobre un []</p>
 
-<div class="input-group mb-3">
-  <input
-    type="text"
-    class="form-control"
-    [(ngModel)]="nombreInput"
-    placeholder="Introduce un nombre"
-    (keyup.enter)="agregarUsuario()"
-  />
-  <button type="button" class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
+<div class="card mt-3 p-3">
+  <h5>Agregar Usuario</h5>
+  <form (ngSubmit)="agregarUsuario()">
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input type="text" class="form-control" [(ngModel)]="nombreInput" name="nombre" />
+    </div>
+    <div class="mb-3">
+      <label>Apellido:</label>
+      <input type="text" class="form-control" [(ngModel)]="apellidoInput" name="apellido" />
+    </div>
+    <div class="mb-3">
+      <label>Edad:</label>
+      <input type="number" class="form-control" [(ngModel)]="edadInput" name="edad" />
+    </div>
+    <div class="mb-3">
+      <label>Hobby:</label>
+      <input type="text" class="form-control" [(ngModel)]="hobbyInput" name="hobby" />
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+  </form>
 </div>
 
+<div class="card mt-3 p-3">
+  <h5>Agregar Hobby a Usuario</h5>
+  <div class="mb-3">
+    <label>Seleccionar Usuario:</label>
+    <select class="form-select" [(ngModel)]="usuarioSeleccionado" name="usuario">
+      <option [ngValue]="null">-- Selecciona un usuario --</option>
+      @for (user of usuarios; track user.getNombre()) {
+        <option [ngValue]="user">{{ user.getNombre() }} - {{ user.getApellido() }}</option>
+      }
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Nuevo Hobby:</label>
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="hobbyNuevoInput" name="hobbyNuevo" />
+      <button type="button" class="btn btn-success" (click)="agregarHobbyAUsuario()">
+        Agregar Hobby
+      </button>
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-4">Lista de Usuarios</h5>
 <ul class="list-group">
-  @for (item of usuarios(); track item) {
-    <li class="list-group-item">{{ item }}</li>
+  @for (item of usuarios; track item.getNombre()) {
+    <li class="list-group-item">
+      <strong>{{ item.getNombre() }} - {{ item.getApellido() }} ({{ item.getEdad() }} años)</strong>
+      <br />
+      <small>Hobbies: {{ item.hobbies.join(', ') }}</small>
+    </li>
   }
 </ul>
