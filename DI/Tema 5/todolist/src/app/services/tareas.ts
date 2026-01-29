@@ -31,5 +31,4 @@ export class Tareas {
   obtenerTareas(): Tarea[] {
     return this.tareas;
   }
-
 }
