@@ -9,7 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.tiendat5.databinding.FragmentSecondBinding
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * Fragmento que representa la segunda pantalla de la aplicación.
+ * Proporciona navegación de regreso al primer fragmento.
  */
 class SecondFragment : Fragment() {
 

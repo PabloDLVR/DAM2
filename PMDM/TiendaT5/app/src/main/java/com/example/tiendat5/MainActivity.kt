@@ -11,6 +11,11 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.tiendat5.databinding.ActivityMainBinding
 
+/**
+ * Actividad principal de la aplicación que actúa como contenedor de navegación.
+ * Gestiona la barra de herramientas (toolbar), el menú de opciones y la navegación
+ * entre fragmentos usando Navigation Component.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

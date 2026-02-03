@@ -5,6 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
+/**
+ * Diálogo que se muestra cuando el registro de un usuario falla.
+ * Notifica al usuario que no se pudo crear la cuenta con los datos proporcionados
+ * (probablemente porque el correo ya existe o hay un error en el servidor).
+ */
 class DiagloRegistroFAIL : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

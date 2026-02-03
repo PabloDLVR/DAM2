@@ -12,6 +12,12 @@ import com.example.tiendat5.data.DataSet
 import com.example.tiendat5.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
+/**
+ * Fragmento que gestiona la interfaz de inicio de sesión de usuarios.
+ * Permite a usuarios existentes ingresar sus credenciales (correo y contraseña) para acceder
+ * a la aplicación. Si las credenciales son incorrectas, ofrece la opción de registrarse como
+ * nuevo usuario. También proporciona un botón directo al formulario de registro.
+ */
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding

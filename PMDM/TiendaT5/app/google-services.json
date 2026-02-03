@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "821165794813",
+    "project_id": "pdlvrces2526",
+    "storage_bucket": "pdlvrces2526.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821165794813:android:efba1ba8bcfe9750d1e594",
+        "android_client_info": {
+          "package_name": "com.example.tiendat5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPqMhRLfuPaCEUZfRb7fVZYebDOZdNr_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

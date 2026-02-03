@@ -5,6 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
+/**
+ * Diálogo que se muestra cuando el registro de un usuario es exitoso.
+ * Presenta un mensaje de confirmación y ofrece al usuario la opción de iniciar sesión
+ * inmediatamente con sus nuevas credenciales.
+ */
 class DiagloRegistroOK : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

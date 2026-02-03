@@ -9,7 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.tiendat5.databinding.FragmentFirstBinding
 
 /**
- * A simple [Fragment] subclass as the default destination in the navigation.
+ * Fragmento que representa la primera pantalla de la aplicación.
+ * Sirve como punto de entrada inicial de la navegación entre fragmentos.
  */
 class FirstFragment : Fragment() {
 

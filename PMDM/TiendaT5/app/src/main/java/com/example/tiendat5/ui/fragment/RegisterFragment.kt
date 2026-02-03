@@ -7,13 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tiendat5.databinding.FragmentRegistroBinding
+import com.google.firebase.auth.FirebaseAuth
 
-class RegisterFragment: Fragment() {
+/**
+ * Fragmento que gestiona la interfaz de registro de nuevos usuarios.
+ * Permite al usuario ingresar sus datos personales (nombre, apellido, correo, contraseña, edad)
+ * y los envía para ser validados y almacenados en el sistema.
+ */
+class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegistroBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -21,7 +29,7 @@ class RegisterFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRegistroBinding.inflate(inflater,container,false)
+        binding = FragmentRegistroBinding.inflate(inflater, container, false)
         return binding.root
     }
 

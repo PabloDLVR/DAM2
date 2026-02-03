@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tiendat5.databinding.FragmentMainBinding
 
+/**
+ * Fragmento principal que representa la pantalla inicial de la tienda.
+ * Sirve como punto de entrada a la interfaz principal de la aplicación.
+ */
 class MainFragment: Fragment() {
 
     private lateinit var binding: FragmentMainBinding
