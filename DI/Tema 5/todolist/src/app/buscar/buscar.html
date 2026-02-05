@@ -1,1 +1,135 @@
-<p>buscar works!</p>
+<div class="container mt-4">
+  <h2>Buscar Tareas</h2>
+
+  <div class="mb-4">
+    <label for="tipoFiltro" class="form-label">Tipo de búsqueda:</label>
+    <select
+      id="tipoFiltro"
+      class="form-select mb-3"
+      [(ngModel)]="tipoFiltro"
+      aria-label="Seleccionar tipo de búsqueda"
+    >
+      <option value="nombre">Buscar por nombre</option>
+      <option value="prioridad">Buscar por prioridad</option>
+    </select>
+  </div>
+
+  @if (tipoFiltro === 'nombre') {
+    <div class="mb-4">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar por nombre de tarea..."
+          [(ngModel)]="termino"
+          (keyup.enter)="buscar()"
+          aria-label="Buscar tareas por nombre"
+        />
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="buscar()"
+          aria-label="Realizar búsqueda"
+        >
+          Buscar
+        </button>
+        <button
+          class="btn btn-secondary"
+          type="button"
+          (click)="limpiar()"
+          aria-label="Limpiar búsqueda"
+        >
+          Limpiar
+        </button>
+      </div>
+    </div>
+  } @else if (tipoFiltro === 'prioridad') {
+    <div class="mb-4">
+      <div class="input-group">
+        <select
+          class="form-select"
+          [(ngModel)]="prioridadSeleccionada"
+          aria-label="Seleccionar prioridad"
+        >
+          <option value="">Seleccionar prioridad...</option>
+          @for (prioridad of prioridades; track prioridad) {
+            <option [value]="prioridad">Prioridad: {{ prioridad }}</option>
+          }
+        </select>
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="buscar()"
+          aria-label="Buscar por prioridad"
+        >
+          Buscar
+        </button>
+        <button
+          class="btn btn-secondary"
+          type="button"
+          (click)="limpiar()"
+          aria-label="Limpiar búsqueda"
+        >
+          Limpiar
+        </button>
+      </div>
+    </div>
+  }
+
+  @if (
+    (tipoFiltro === 'nombre' && termino) || (tipoFiltro === 'prioridad' && prioridadSeleccionada)
+  ) {
+    @if (tareas.length === 0) {
+      <div class="alert alert-info" role="alert">
+        @if (tipoFiltro === 'nombre') {
+          No se encontraron tareas que coincidan con "{{ termino }}".
+        } @else {
+          No se encontraron tareas con prioridad {{ prioridadSeleccionada }}.
+        }
+      </div>
+    } @else {
+      <div class="alert alert-success" role="status">
+        Se encontraron {{ tareas.length }} tarea(s).
+      </div>
+      <div class="row g-4">
+        @for (tarea of tareas; track $index) {
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">{{ tarea.nombre }}</h5>
+                @if (tarea.descripcion) {
+                  <p class="card-text text-muted">{{ tarea.descripcion }}</p>
+                }
+                <div class="mb-3">
+                  <small class="text-muted d-block">
+                    @if (tarea.responsable) {
+                      <span class="badge bg-info">{{ tarea.responsable }}</span>
+                    }
+                    @if (tarea.fecha) {
+                      <span class="badge bg-secondary ms-2">{{ tarea.fecha }}</span>
+                    }
+                    @if (tarea.prioridad) {
+                      <span class="badge bg-warning ms-2 text-dark"
+                        >Prioridad: {{ tarea.prioridad }}</span
+                      >
+                    }
+                  </small>
+                </div>
+                @if (tarea.items && tarea.items.length > 0) {
+                  <div class="mb-3">
+                    <strong class="d-block mb-2">Items:</strong>
+                    <ul class="list-unstyled">
+                      @for (item of tarea.items; track $index; let itemIndex = $index) {
+                        <li class="ms-3"><i class="bi bi-check"></i> {{ item }}</li>
+                      }
+                    </ul>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

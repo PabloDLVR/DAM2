@@ -1,5 +1,5 @@
 <main class="container mt-4">
-  <h1>TODO LIST</h1>
+  <!--   <h1>TODO LIST</h1>
   <select class="form-select mb-4" [(ngModel)]="opcion">
     <option value="1">Agregar</option>
     <option value="2">Buscar</option>
@@ -15,5 +15,15 @@
     @case ('3') {
       <app-listar></app-listar>
     }
-  }
+  } -->
+
+  <nav class="nav nav-pills mb-4">
+    <a class="nav-link" routerLink="/agregar" routerLinkActive="active" aria-current="page"
+      >Agregar</a
+    >
+    <a class="nav-link" routerLink="/buscar" routerLinkActive="active">Buscar</a>
+    <a class="nav-link" routerLink="/listar" routerLinkActive="active">Listar</a>
+  </nav>
+
+  <router-outlet></router-outlet>
 </main>

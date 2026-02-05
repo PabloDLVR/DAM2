@@ -31,4 +31,30 @@ export class Tareas {
   obtenerTareas(): Tarea[] {
     return this.tareas;
   }
+
+  // Busca tareas por nombre
+  buscarTareas(termino: string): Tarea[] {
+    if (!termino.trim()) {
+      return this.tareas;
+    }
+    return this.tareas.filter(tarea =>
+      tarea.nombre?.toLowerCase().includes(termino.toLowerCase())
+    );
+  }
+
+  // Filtra tareas por prioridad
+  filtrarPorPrioridad(prioridad: number): Tarea[] {
+    return this.tareas.filter(tarea => tarea.prioridad === prioridad);
+  }
+
+  // Obtiene todas las prioridades únicas en las tareas
+  obtenerPrioridades(): number[] {
+    const prioridades = new Set<number>();
+    this.tareas.forEach(tarea => {
+      if (tarea.prioridad !== undefined) {
+        prioridades.add(tarea.prioridad);
+      }
+    });
+    return Array.from(prioridades).sort((a, b) => a - b);
+  }
 }

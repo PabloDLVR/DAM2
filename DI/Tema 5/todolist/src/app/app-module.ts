@@ -7,13 +7,15 @@ import { App } from './app';
 import { Buscar } from './buscar/buscar';
 import { Listar } from './listar/listar';
 import { Agregar } from './agregar/agregar';
+import { ImagenesPipe } from './pipes/imagenes-pipe';
 
 @NgModule({
   declarations: [
     App,
     Buscar,
     Listar,
-    Agregar
+    Agregar,
+    ImagenesPipe
   ],
   imports: [
     BrowserModule,

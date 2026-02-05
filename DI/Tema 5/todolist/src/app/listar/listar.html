@@ -1,1 +1,86 @@
-<p>listar works!</p>
+<div class="container mt-4">
+  <h2>Tareas</h2>
+
+  @if (prioridades.length > 0) {
+    <div class="mb-4">
+      <label for="prioridadFilter" class="form-label">Filtrar por Prioridad:</label>
+      <div class="input-group">
+        <select
+          id="prioridadFilter"
+          class="form-select"
+          [(ngModel)]="prioridadSeleccionada"
+          (change)="filtrarPorPrioridad()"
+          aria-label="Filtrar por prioridad"
+        >
+          <option value="">Todas las prioridades</option>
+          @for (prioridad of prioridades; track prioridad) {
+            <option [value]="prioridad">Prioridad: {{ prioridad }}</option>
+          }
+        </select>
+        @if (prioridadSeleccionada) {
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="limpiarFiltro()"
+            aria-label="Limpiar filtro de prioridad"
+          >
+            Limpiar
+          </button>
+        }
+      </div>
+    </div>
+  }
+
+  @if (tareas.length === 0) {
+    <div class="alert alert-info" role="alert">No hay tareas registradas.</div>
+  } @else {
+    <div class="row g-4">
+      @for (tarea of tareas; track $index; let i = $index) {
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">{{ tarea.nombre }}</h5>
+              @if (tarea.descripcion) {
+                <p class="card-text text-muted">{{ tarea.descripcion }}</p>
+              }
+              <div class="mb-3">
+                <small class="text-muted d-block">
+                  @if (tarea.responsable) {
+                    <span class="badge bg-info">{{ tarea.responsable }}</span>
+                  }
+                  @if (tarea.fecha) {
+                    <span class="badge bg-secondary ms-2">{{ tarea.fecha }}</span>
+                  }
+                  @if (tarea.prioridad) {
+                    <span class="badge bg-warning ms-2 text-dark"
+                      >Prioridad: {{ tarea.prioridad }}</span
+                    >
+                  }
+                </small>
+              </div>
+              @if (tarea.items && tarea.items.length > 0) {
+                <div class="mb-3">
+                  <strong class="d-block mb-2">Items:</strong>
+                  <ul class="list-unstyled">
+                    @for (item of tarea.items; track $index; let itemIndex = $index) {
+                      <li class="ms-3"><i class="bi bi-check"></i> {{ item }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+            </div>
+            <div class="card-footer bg-white">
+              <button
+                class="btn btn-danger btn-sm w-100"
+                (click)="eliminarTarea(i)"
+                aria-label="Eliminar tarea {{ tarea.nombre }}"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
