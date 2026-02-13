@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.examenfinal.ui.fragment.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_loginFragment_to_launchesFragment"
+            app:destination="@id/launchesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/launchesFragment"
+        android:name="com.example.examenfinal.ui.fragment.LaunchFragment"
+        android:label="Lanzamientos">
+        <action
+            android:id="@+id/action_launchFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.examenfinal.ui.fragment.FavoritesFragment"
+        android:label="FavoritesFragment" />
+
+</navigation>

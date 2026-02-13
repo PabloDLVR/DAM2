@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "293528218201",
+    "project_id": "examenfinal-da2d2",
+    "storage_bucket": "examenfinal-da2d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293528218201:android:6146418687b900f72adf48",
+        "android_client_info": {
+          "package_name": "com.example.examenfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdHg0I9gGZZ7HQqNF6hFDZoEzq88BrHGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
